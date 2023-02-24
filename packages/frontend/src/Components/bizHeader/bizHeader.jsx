@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 import { AiFillInfoCircle } from "react-icons/ai";
 import Bizbtn from "../bizbtn/bizbtn";
+import BizStatusBar from "../bizStatusBar/bizStatusBar";
 
 function bizHeader(props) {
   return (
@@ -15,11 +16,16 @@ function bizHeader(props) {
             <AiFillInfoCircle />
           </Link>
         </div>
-        {props.btnName == "" ? null : (
+        {/* <BizStatusBar /> */}
+        {/* {props.btnName == "" ? null : (
           <div className="btn-mr">
-            <Bizbtn name={props.btnName} path={props.btnPath} color={props.btnColor}/>
+            <Bizbtn
+              name={props.btnName}
+              path={props.btnPath}
+              color={props.btnColor}
+            />
           </div>
-        )}
+        )} */}
       </div>
       <hr className="line-hr my-3"></hr>
     </IconContext.Provider>

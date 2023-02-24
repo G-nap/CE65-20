@@ -2,6 +2,7 @@ import React from "react";
 import BizSidebar from "../../../Components/bizSidebar/bizSidebar";
 import BizHeader from "../../../Components/bizHeader/bizHeader";
 import BizTableInvestment from "../../../Components/bizTable/bizTableInvestment";
+import BizTableFixedCosts from "../../../Components/bizTable/bizTableFixedCosts";
 import "../../BizTools/biztools.css";
 
 function OperationCostPage() {
@@ -11,8 +12,9 @@ function OperationCostPage() {
 
       <BizHeader title="Operation Cost Table" infoPath="/" btnName="" />
       <div className="m-bt">
+        {/* <BizTableFixedCosts /> */}
         <BizTableInvestment name="เงินเดือน" />
-        <BizTableInvestment name="ค่าใช้จ่ายรายเดือน" />
+        {/* <BizTableInvestment name="ค่าใช้จ่ายรายเดือน" /> */}
       </div>
     </div>
   );

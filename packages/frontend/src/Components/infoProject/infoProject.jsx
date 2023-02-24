@@ -9,7 +9,6 @@ import BizLogo from "../bizLogo/bizLogo";
 
 import "./infoProject.css";
 
-import AUTH from "../../Assets/Mock/mockAuth";
 
 function infoProject(props) {
   return (
@@ -18,21 +17,21 @@ function infoProject(props) {
       <div className="info-pj-body">
         <div className="d-flex flex-col">
           {/* <BizTextInfo title="ข้อมูลพื้นฐานธุรกิจ" /> */}
-          <p>ข้อมูลพื้นฐานธุรกิจ{props.name}</p>
+          <p>ข้อมูลพื้นฐานธุรกิจ</p>
           {/* <AiOutlineClose onClick={props.close} /> */}
         </div>
         <div className="new-invest-form">
           <div className="d-flex label-newInvest-pj">
             <form>
               <div className="input-container">
-                <BizTextInfo title="ชื่อธุรกิจ " />
+                <BizTextInfo title="ชื่อธุรกิจ" />
                 <input
                   className="input-newInvest-pj"
                   style={{ width: "280px" }}
                   type="text"
                   name="uname"
                   required
-                  placeholder={props.name}
+                  value={props.name}
                 />
               </div>
               <div className="d-flex flex-col">
@@ -48,6 +47,7 @@ function infoProject(props) {
                       className="input-newInvest-pj-small"
                       type="text"
                       name="uname"
+                      value={props.created_date}
                       required
                     />
                   </div>
@@ -58,6 +58,7 @@ function infoProject(props) {
                       className="input-newInvest-pj-small"
                       type="text"
                       name="uname"
+                      value={props.projection_period}
                       required
                     />
                   </div>
@@ -67,6 +68,7 @@ function infoProject(props) {
                       className="input-newInvest-pj-small"
                       type="text"
                       name="uname"
+                      // value={props.description}
                       required
                     />
                   </div>
@@ -76,6 +78,7 @@ function infoProject(props) {
                       className="input-newInvest-pj-small"
                       type="text"
                       name="uname"
+                      value={props.working_hours}
                       required
                     />
                   </div>
@@ -93,6 +96,7 @@ function infoProject(props) {
                   style={{ height: "143px", width: "250px" }}
                   type="textarea"
                   name="uname"
+                  value={props.description}
                   required
                 />
               </div>
@@ -103,6 +107,7 @@ function infoProject(props) {
                   type="text"
                   name="pass"
                   required
+                  // value={props.description}
                 />
               </div>
               <div className="d-flex flex-col">
@@ -112,6 +117,7 @@ function infoProject(props) {
                     className="input-newInvest-pj-small"
                     type="text"
                     name="pass"
+                    value={props.income_tax_rate}
                     required
                   />
                 </div>
@@ -121,6 +127,7 @@ function infoProject(props) {
                     className="input-newInvest-pj-small"
                     type="text"
                     name="pass"
+                    value={props.discounting_rate}
                     required
                   />
                 </div>

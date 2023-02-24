@@ -1,0 +1,8 @@
+.status-card {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 150px;
+    background-color: #F1EAF6;
+    margin: 1rem;
+}

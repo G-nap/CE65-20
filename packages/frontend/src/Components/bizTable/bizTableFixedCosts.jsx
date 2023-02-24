@@ -6,9 +6,9 @@ import "./bizTableInvestment.css";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
-function bizTableInvestment() {
-  const [investData, setInvestData] = useState([]);
-  const [investDataTable, setInvestDataTable] = useState([]);
+function bizTableFixedCosts() {
+  const [fixedCostsData, setfixedCostsData] = useState([]);
+  const [fixedCostsTable, setfixedCostsTable] = useState([]);
   const [projectID, setProjectID] = useState("63df4d4f1882820b1b4cecc3");
   const [investTableTitle, setInvestTableTitle] = useState("");
 
@@ -29,7 +29,7 @@ function bizTableInvestment() {
       .get(`http://localhost:5000/project/post/${projectID}/`)
       .then((res) => {
         // for (let i = 0; i < investData.length; i++) {
-        setInvestData(res.data.expense.investment_tables[0].investments);
+        setfixedCostsData(res.data.expense.fixed_cost_tables[0].investments);
         // setInvestData((investData) => [
         //   ...investData,
         //   res.data.expense.investment_tables[0].investments,
@@ -38,9 +38,9 @@ function bizTableInvestment() {
         // setInvestData(res.data.expense.investment_tables);
         // setInvestDataTable(res.data.expense.investment_tables);
         setProjectID(res.data._id);
-        setInvestTableTitle(res.data.expense.investment_tables[0].name);
+        setInvestTableTitle(res.data.expense.fixed_cost_tables[0].name);
         // setInvestTableTitle(investTableTitle => [res.data.expense.investment_tables[i].name]);
-        console.log(res.data.expense.investment_tables.length);
+        console.log(res.data.expense.fixed_cost_tables.length);
         console.log(res.data);
       })
       .catch(function (error) {
@@ -55,8 +55,8 @@ function bizTableInvestment() {
   return (
     <div class="bt">
       <table class="table container tb-con tb-color">
-        <h1>{investData.name}</h1>
-        {console.log("investData", investData)}
+        <h1>{fixedCostsData.name}</h1>
+        {console.log("investData", fixedCostsData)}
         {/* {console.log("investDataTable" , investDataTable[0].investments[0].name)} */}
         <thead>
           <tr className="tb-head-color-red">
@@ -79,7 +79,7 @@ function bizTableInvestment() {
           {/* {investData.investment.map((i) => {
             return (
               <div> */}
-          {investData.map((d) => {
+          {fixedCostsData.map((d) => {
             return (
               <tr key={d._id}>
                 <th className="table-secondary tb-text-normal t-text">
@@ -133,4 +133,4 @@ function bizTableInvestment() {
   );
 }
 
-export default bizTableInvestment;
+export default bizTableFixedCosts;

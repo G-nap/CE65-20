@@ -14,14 +14,14 @@ import { addNewProject } from "./projectsSlice";
 const AddProjectForm = () => {
   const dispatch = useDispatch();
 
-  const [userId, setUserId] = useState("63de88dd7e267c38c5cdf616");
+  const [user_id, setUserId] = useState("63de88dd7e267c38c5cdf616");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
+  const [created_date, setStartDate] = useState("");
   const [projectionPeriod, setProjectionPeriod] = useState("");
   const [currencyID, setCurrencyID] = useState("");
   const [workingHours, setWorkingHours] = useState(8);
-  const [industryIDs, setIndustryIDs] = useState("");
+  const [industry_ids, setIndustryIDs] = useState("");
   const [incomeTaxRate, setIncomeTaxRate] = useState("");
   const [discountingRate, setDiscountingRate] = useState("");
 
@@ -61,12 +61,12 @@ const AddProjectForm = () => {
         addNewProject({
           name,
           description,
-          userId,
-          startDate,
+          user_id,
+          created_date,
           projectionPeriod,
           currencyID,
           workingHours,
-          industryIDs,
+          industry_ids,
           incomeTaxRate,
           discountingRate,
         })
@@ -86,6 +86,7 @@ const AddProjectForm = () => {
     } finally {
       setAddRequestStatus("idle");
     }
+    this.goBack();
   };
 
 //   const canSave = Boolean(name) && Boolean(description) && Boolean(userId);
@@ -132,7 +133,7 @@ const AddProjectForm = () => {
                   className="input-newInvest-pj-small"
                   type="text"
                   name="uname"
-                  value={startDate}
+                  value={created_date}
                   onChange={onStartDateChanged}
                   required
                 />
@@ -195,7 +196,7 @@ const AddProjectForm = () => {
               className="input-newInvest-pj-small"
               type="text"
               name="pass"
-              value={industryIDs}
+              value={industry_ids}
               onChange={onIndustryIDsChanged}
               required
             />
@@ -224,8 +225,9 @@ const AddProjectForm = () => {
               />
             </div>
           </div>
-          <button type="button" onClick={onCreateProjectClicked}>
+          <button type="button" onClick={onCreateProjectClicked} >
             Create Project
+
           </button>
           {/* <div className="button-container">
               <input className="input-newInvest-pj" type="submit" />
