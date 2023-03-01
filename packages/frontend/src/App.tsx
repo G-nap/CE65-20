@@ -20,8 +20,8 @@ import OperationCostPage from "./Pages/BizTools/operationCostPage/operationCostP
 import ProjectConfigPage from "./Pages/BizTools/projectConfigPage/projectConfigPage";
 import RevenuePage from "./Pages/BizTools/revenuePage/revenuePage";
 import TotalInvestmentPage from "./Pages/BizTools/totalInvestmentPage/totalInvestmentPage";
-import FFCPage from "./Pages/Checkbiz/ffcPage/ffcPage";
-import StatementsPage from "./Pages/Checkbiz/statementsPage/statementsPage";
+import FFCsPage from "./Pages/Checkbiz/ffcPage/FFCPage";
+import StatementsPage from "./Pages/Checkbiz/statementsPage/StatementsPage";
 
 function App() {
   return (
@@ -45,9 +45,8 @@ function App() {
           <Route path="/OperationCost" element={<OperationCostPage />} />
           <Route path="/Revenue" element={<RevenuePage />} />
           <Route path="/Miscellaneous" element={<MiscellaneousPage />} />
-          <Route path="/FFC" element={<FFCPage />} />
+          <Route path="/FFC" element={<FFCsPage />} />
           <Route path="/Statements" element={<StatementsPage/>} />
-          <Route path="/Statements" element={<StatementsPage />} />
           {/* <Route path="/NewInvestmentProject" element={<NewInvestmentProject />} /> */}
         </Routes>
       </div>

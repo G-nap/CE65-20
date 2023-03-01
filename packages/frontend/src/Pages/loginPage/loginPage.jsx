@@ -8,7 +8,7 @@ import "./loginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import ConditionalLink from "../../Components/common/conditionalLink";
-import { authAction } from "../../store/auth-slice";
+// import { authAction } from "../../store/auth-slice";
 
 
 function LoginPage() {
@@ -32,7 +32,7 @@ function LoginPage() {
           console.log("response!");
           console.log(res)
           setUser(res.data)
-          dispatch(authAction.login())
+          // dispatch(authAction.login())
         })
         .catch(function (error) {
           console.log(error);

@@ -49,7 +49,7 @@ export const bizSidebarData_biztools = [
 export const bizSidebarData_checkbiz = [
     {
       title: 'ประเมินธุรกิจ',
-      path: '/ffc',
+      path: '/FFC',
       icon: <BsJournalCheck />,
       cName: 'nav-text'
     },
