@@ -91,7 +91,52 @@ const BIZTOOL_PAGE_MOCKDATA = {
     },
     operationCost: {
         data: [
-
+            {
+                tableId: 1,
+                title: "ค่าบริการ",
+                rowData: [
+                    {
+                        rowId: 1,
+                        data:
+                            [
+                                { colId: 1, val: "บริการทำสีผมหญิง" },
+                                { colId: 2, val: 2 },
+                                { colId: 3, val: "" },
+                                { colId: 4, val: new Date() },
+                            ]
+                    },
+                    {
+                        rowId: 2,
+                        data:
+                            [
+                                { colId: 1, val: "บริการทำสีผมชาย" },
+                                { colId: 2, val: 2 },
+                                { colId: 3, val: "" },
+                                { colId: 4, val: new Date() },
+                            ]
+                    },
+                    {
+                        rowId: 3,
+                        data:
+                            [
+                                { colId: 1, val: "บริการตัดผมชาย" },
+                                { colId: 2, val: 3 },
+                                { colId: 3, val: "" },
+                                { colId: 4, val: new Date() },
+                            ]
+                    },
+                    {
+                        rowId: 3,
+                        data:
+                            [
+                                { colId: 1, val: "บริการตัดผมหญิง" },
+                                { colId: 2, val: 3 },
+                                { colId: 3, val: "" },
+                                { colId: 4, val: new Date() },
+                            ]
+                    },
+                ]
+            },
         ],
     },
     revenue: {
