@@ -17,14 +17,14 @@ function RevenuePage() {
       <div className="p-4 biztool-body-width">
         <BiztoolHeader
           type={config.type}
-          title={config.title}
-          handleFunction={config.addTableHandleFunction}
+          title={config.title}         
         />
         <BiztoolBody
           type={config.type}
           tableStyle={config.tableStyle}
           tableData={tableData}
           onChangeHandle={config.onChangeHandle}
+          handleFunction={config.addTableHandleFunction}
         />
       </div>
     </div>

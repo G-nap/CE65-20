@@ -92,6 +92,17 @@ const BiztoolTable = (props) => {
                     value={eachCell.val.toLocaleString('en-US')}
                     onChange={event => onChangeHandle(eachRow.rowId, eachCell.colId, event.target.value)}
                   />}
+                  {props.tableStyle.column[cellIndex].type == "percent" &&
+                  <input key={eachCell.colId}
+                    type="text"
+                    className='column border border-primary'
+                    style={{
+                      width: `${columnStyles[cellIndex].width}px`,
+                      textAlign: `end`,
+                    }}
+                    value={parseFloat(eachCell.val) + "%"}
+                    onChange={event => onChangeHandle(eachRow.rowId, eachCell.colId, event.target.value)}
+                  />}
                 {props.tableStyle.column[cellIndex].type == "dropdown" &&
                   <div key={eachCell.colId}
                   >

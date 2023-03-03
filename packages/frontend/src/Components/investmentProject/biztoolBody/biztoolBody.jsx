@@ -13,10 +13,10 @@ const BiztoolBody = (props) => {
           <BiztoolAddTable
             type={`${props.type}-service`}
             title="+ ตารางใหม่"
-            handleFunction={props.handleFuncitn.handleSeriveFunction}
+            handleFunction={props.handleFunction.addTableHandleServiceFunction}
           />
           <BiztoolTableList
-            data={props.serviceTableData}
+            data={props.tableData.serviceData}
             type="revenue-service"
             tableStyle={props.tableStyle.serviceTableStyle} 
             onChangeHandle={props.onChangeHandle.onServiceChangeHandle}
@@ -27,16 +27,17 @@ const BiztoolBody = (props) => {
           <BiztoolAddTable
             type={`${props.type}-product`}
             title="+ ตารางใหม่"
-            handleFunction={props.handleFuncitn.handleProductFunction}
+            handleFunction={props.handleFunction.addTableHandleProductFunction}
           />
           <BiztoolTableList
-            data={props.productTableData}
+            data={props.tableData.productData}
             type="revenue-product"
             tableStyle={props.tableStyle.productTableStyle} 
             onChangeHandle={props.onChangeHandle.onProductChangeHandle}
             />
         </div>
       </div>}
+
       {props.type != "revenue" && <div className='biztool-body-flex '>
         <BiztoolTableList
           data={props.tableData}

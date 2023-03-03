@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import BizSidebar from "../../../Components/bizTools/bizSidebar/bizSidebar";
 import BiztoolHeader from "../../../Components/investmentProject/biztoolHeader/biztoolHeader";
 import BiztoolBody from "../../../Components/investmentProject/biztoolBody/biztoolBody";
-import BIZTOOL_PAGE_MOCKDATA from "../pageMockData";
 import BIZTOOL_PAGE_CONFIG from "../pageConfig";
+import BIZTOOL_PAGE_MOCKDATA from "../pageMockData";
 
 function MiscellaneousPage() {
 
@@ -17,13 +17,13 @@ function MiscellaneousPage() {
         <BiztoolHeader
           type={config.type}
           title={config.title}
-          handleFunction={config.addTableHandleFunction}
         />
         <BiztoolBody
           type={config.type}
           tableStyle={config.tableStyle}
           tableData={tableData}
           onChangeHandle={config.onChangeHandle}
+          handleFunction={config.addTableHandleFunction}
         />
       </div>
     </div>
