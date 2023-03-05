@@ -23,7 +23,6 @@ function MiscellaneousPage() {
           tableStyle={config.tableStyle}
           tableData={tableData}
           onChangeHandle={config.onChangeHandle}
-          handleFunction={config.addTableHandleFunction}
         />
       </div>
     </div>

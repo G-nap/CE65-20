@@ -19,8 +19,8 @@ const BiztoolTable = (props) => {
 
   const eachTable = props.eachTable
 
-  const addRowHandle = () => {
-    alert('add row!')
+  const addRowHandle = (toolPage, tableName, table) => {
+    alert(`add row! ${toolPage}: ${tableName} [[${table}]]`)
   }
   const onChangeHandle = (row, col, val) => {
     props.onChangeHandle(eachTable.tableId, row, col, val)

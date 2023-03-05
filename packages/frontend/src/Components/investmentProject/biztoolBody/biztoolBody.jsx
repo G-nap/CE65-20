@@ -38,7 +38,37 @@ const BiztoolBody = (props) => {
         </div>
       </div>}
 
-      {props.type != "revenue" && <div className='biztool-body-flex '>
+      {props.type == "miscellaneous" && <div className='biztool-body-flex '>
+        <div >
+          <div className='miscellaneous-table-header'>ผู้ถือหุ้น</div>
+          <BiztoolTableList
+            data={props.tableData.shareholderData}
+            type="miscellaneous-shareholder"
+            tableStyle={props.tableStyle.shareholderTableStyle} 
+            onChangeHandle={props.onChangeHandle.onShareholderChangeHandle}
+            />
+        </div>
+        <div>
+          <div className='miscellaneous-table-header'>ผู้รับปันผล</div>
+          <BiztoolTableList
+            data={props.tableData.dividendRecipientData}
+            type="miscellaneous-dividendRecipient"
+            tableStyle={props.tableStyle.dividendRecipientTableStyle} 
+            onChangeHandle={props.onChangeHandle.onDividendRecipientChangeHandle}
+            />
+        </div>
+        <div>
+          <div className='miscellaneous-table-header'>เงินกู้และการชำระเงินกู้</div>
+          <BiztoolTableList
+            data={props.tableData.loanData}
+            type="miscellaneous-loan"
+            tableStyle={props.tableStyle.loanTableStyle} 
+            onChangeHandle={props.onChangeHandle.onLoanChangeHandle}
+            />
+        </div>
+      </div>}
+
+      {(props.type != "revenue" && props.type != "miscellaneous") && <div className='biztool-body-flex '>
         <BiztoolTableList
           data={props.tableData}
           type={props.type}
