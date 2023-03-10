@@ -103,6 +103,7 @@ const BIZTOOL_PAGE_MOCKDATA = {
                                 { colId: 2, val: 35000 },
                                 { colId: 3, val: 2 },
                                 { colId: 4, val: 1 },
+                                { colId: 5, val: 1 },
 
                             ]
                     },

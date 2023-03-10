@@ -1,7 +1,7 @@
 import React from 'react'
 import BiztoolAddTable from '../biztoolAddTable/biztoolAddTable'
 import BiztoolTableList from './biztoolTableList/biztoolTableList'
-import "./biztoolBody.css"
+
 
 const BiztoolBody = (props) => {
   return (
@@ -68,7 +68,16 @@ const BiztoolBody = (props) => {
         </div>
       </div>}
 
-      {(props.type != "revenue" && props.type != "miscellaneous") && <div className='biztool-body-flex '>
+      {(props.type == "operation-cost") && <div className='biztool-body-flex '>
+        <BiztoolTableList
+          data={props.tableData}
+          type={props.type}
+          tableStyle={props.tableStyle} 
+          onChangeHandle={props.onChangeHandle}
+          />
+      </div>}
+
+      {(props.type != "revenue" && props.type != "miscellaneous" && props.type != "operation-cost") && <div className='biztool-body-flex '>
         <BiztoolTableList
           data={props.tableData}
           type={props.type}

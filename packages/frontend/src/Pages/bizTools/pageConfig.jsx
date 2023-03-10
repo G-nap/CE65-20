@@ -131,6 +131,29 @@ const BIZTOOL_PAGE_CONFIG = {
                     ],
                     editable: true,
                 },
+                {
+                    colId: 5,
+                    title: "จำนวน(หน่วย)",
+                    width: 70,
+                    type: "cost-table",
+                    backgroundColor: "#ffffff",
+                    color: "#000000",
+                    enumData: [
+                        {
+                            title: 1,
+                            value: 1,
+                        },
+                        {
+                            title: 3,
+                            value: 2,
+                        },
+                        {
+                            title: 12,
+                            value: 3,
+                        },
+                    ],
+                    editable: true,
+                },
                 
             ],
         }
