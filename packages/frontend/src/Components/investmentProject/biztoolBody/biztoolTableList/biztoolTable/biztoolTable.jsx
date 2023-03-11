@@ -159,6 +159,27 @@ const BiztoolTable = (props) => {
                       value={parseFloat(eachCell.val) + " หน่วย" + " แสดงเดือน"}
                       onChange={event => onChangeHandle(eachRow.rowId, eachCell.colId, event.target.value)}
                     />
+                    
+                    <input key={eachCell.colId}
+                      type="text"
+                      className='column border border-primary'
+                      style={{
+                        width: `${columnStyles[cellIndex].width}px`,
+                        textAlign: `start`,
+                      }}
+                      value={"ปีที่ " + parseFloat(eachCell.val)}
+                      onChange={event => onChangeHandle(eachRow.rowId, eachCell.colId, event.target.value)}
+                    />
+                    <input key={eachCell.colId}
+                      type="text"
+                      className='column border border-primary'
+                      style={{
+                        width: `${columnStyles[cellIndex].width * 2.5}px`,
+                        textAlign: `start`,
+                      }}
+                      value={parseFloat(eachCell.val) + " หน่วย" + " แสดงเดือน"}
+                      onChange={event => onChangeHandle(eachRow.rowId, eachCell.colId, event.target.value)}
+                    />
                   </div>
                 }
 
