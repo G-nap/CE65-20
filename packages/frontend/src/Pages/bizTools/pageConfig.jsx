@@ -162,10 +162,10 @@ const BIZTOOL_PAGE_CONFIG = {
         type: "revenue",
         title: "รายรับ",
         addTableHandleFunction: {
-            addTableHandleServiceFunction: (input) => {
+            handleSeriveFunction: (input) => {
                 alert("service")
             },
-            addTableHandleProductFunction: (input) => {
+            handleProductFunction: (input) => {
                 alert("product")
             },
         },

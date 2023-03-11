@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 
 import "./loginPage.css";
@@ -12,55 +11,18 @@ import ConditionalLink from "../../Components/common/conditionalLink";
 
 
 function LoginPage() {
-  const [user, setUser] = useState();
-  const { register, handleSubmit } = useForm();
-  const [auth, setAuth] = useState({ token: "", status: false, username: "" })
+  
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
-  const dispatch = useDispatch();
+  const auth = useSelector(state => state.users.auth)
 
-  useEffect(() => {
-    if (auth.status) {
-      const config = {
-        params: { username: auth.username },
-        headers: { Authorization: `Bearer ${auth.token}` }
-      };
-      axios.get("http://localhost:5000/user/username",
-        config,
-      )
-        .then(res => {
-          console.log("response!");
-          console.log(res)
-          setUser(res.data)
-          // dispatch(authAction.login())
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
-    }
-    if (user)
-      navigate('/Workspace');
-  }, [auth, user]);
+  const { register, handleSubmit } = useForm();
 
   const doSubmit = (input) => {
-    // const doSubmit = (inp) => {
-    // const input = { username: "erika4", password: "test123" }
-    const params = new URLSearchParams();
-    params.append('username', input.username);
-    params.append('password', input.password);
-    axios.post("http://localhost:5000/auth/auth/login"
-      , params,)
-      .then(res => {
-        setAuth({
-          token: res.data.access_token,
-          status: true,
-          username: input.username
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("Wrong username or password!")
-      })
+    dispatch(setAuthUsername(input.username))
+    dispatch(getToken({ username: input.username, password: input.password }))
+    navigate('/Workspace')
   }
 
   return (
@@ -68,7 +30,7 @@ function LoginPage() {
       <div className="row justify-content-center">
         <div className="col-sm-6">
           <img
-            src={require("../../Assets/login-img.png")}
+            src={require("../../assets/login-img.png")}
             className="card-img-2"
             style={{ transform: "scale(0.7) translate(-10%, 0%)" }}
           />
@@ -101,7 +63,7 @@ function LoginPage() {
               <Link className="link-text">
                 <p>Forget Password ?</p>
               </Link>
-              <ConditionalLink condition={user} to="/Workspace" style={{ textDecoration: "none" }} >
+              <ConditionalLink condition={auth.isLoggedIn} to="/Workspace" style={{ textDecoration: "none" }} >
                 <button type="submit" class="btn login-butt">
                   Sign in
                 </button>
