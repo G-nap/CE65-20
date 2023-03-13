@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import BizTextInfo from "../../Components/bizTools/bizTextInfo/bizTextInfo";
+import BizTextInfo from "../../components/bizTools/bizTextInfo/bizTextInfo";
 import { AiOutlineClose } from "react-icons/ai";
-import BizLogo from "../../Components/bizTools/bizLogo/bizLogo";
-import ProjectTempleteCard from "../../Components/projects/projectTempleteCard/projectTempleteCard";
+import BizLogo from "../../components/bizTools/bizLogo/bizLogo";
+import ProjectTempleteCard from "../../components/projects/projectTempleteCard/projectTempleteCard";
 import { VscChevronRight } from "react-icons/vsc";
 
 import { projectAdded } from "./projectsSlice";

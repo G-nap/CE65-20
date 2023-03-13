@@ -3,25 +3,25 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
-import DBTest1 from "./Pages/.test/dbTest1";
-import DBTest2 from "./Pages/.test/dbTest2";
+import DBTest1 from "./pages/.test/dbTest1";
+import DBTest2 from "./pages/.test/dbTest2";
 
-import MainSidebar from "./Components/mainSidebar/mainSidebar";
-import ProfilePage from "./Pages/profilePage/profilePage";
-import AccountPage from "./Pages/accountPage/accountPage";
-import LandingPage from "./Pages/landingPage/landingPage";
-import LoginPage from "./Pages/loginPage/loginPage";
-import RegisterPage from "./Pages/registerPage/registerPage";
-import SubscriptionPage from "./Pages/subscriptionPage/subscriptionPage";
-import WorkSpacePage from "./Pages/workSpacePage/workSpacePage";
-import ComparePage from "./Pages/comparePage/comparePage";
-import MiscellaneousPage from "./Pages/BizTools/miscellaneousPage/miscellaneousPage";
-import OperationCostPage from "./Pages/BizTools/operationCostPage/operationCostPage";
-import ProjectConfigPage from "./Pages/BizTools/projectConfigPage/projectConfigPage";
-import RevenuePage from "./Pages/BizTools/revenuePage/revenuePage";
-import TotalInvestmentPage from "./Pages/BizTools/totalInvestmentPage/totalInvestmentPage";
-import FFCsPage from "./Pages/Checkbiz/ffcPage/FFCPage";
-import StatementsPage from "./Pages/Checkbiz/statementsPage/StatementsPage";
+import MainSidebar from "./components/mainSidebar/mainSidebar";
+import ProfilePage from "./pages/profilePage/profilePage";
+import AccountPage from "./pages/accountPage/accountPage";
+import LandingPage from "./pages/landingPage/landingPage";
+import LoginPage from "./pages/loginPage/loginPage";
+import RegisterPage from "./pages/registerPage/registerPage";
+import SubscriptionPage from "./pages/subscriptionPage/subscriptionPage";
+import WorkSpacePage from "./pages/workSpacePage/workSpacePage";
+import ComparePage from "./pages/comparePage/comparePage";
+import MiscellaneousPage from "./pages/BizTools/miscellaneousPage/miscellaneousPage";
+import OperationCostPage from "./pages/BizTools/operationCostPage/operationCostPage";
+import ProjectConfigPage from "./pages/BizTools/projectConfigPage/projectConfigPage";
+import RevenuePage from "./pages/BizTools/revenuePage/revenuePage";
+import TotalInvestmentPage from "./pages/BizTools/totalInvestmentPage/totalInvestmentPage";
+import FFCsPage from "./pages/Checkbiz/ffcPage/FFCPage";
+import StatementsPage from "./pages/Checkbiz/statementsPage/StatementsPage";
 import { useSelector } from "react-redux";
 
 function App() {

@@ -1,6 +1,5 @@
 import React from 'react'
 import BiztoolTable from './biztoolTable/biztoolTable'
-
 const BiztoolTableList = (props) => {
   return (
     <div >
