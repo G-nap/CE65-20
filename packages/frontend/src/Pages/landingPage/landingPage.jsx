@@ -4,20 +4,23 @@ import "./landingPage.css";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
+import Bizbtn from "../../components/bizTools/bizbtn/bizbtn";
 
 function LandingPage() {
   return (
     <div className="justify-content-center landing-div">
       <div className="d-flex justify-content-between px-5">
         <p className="logo-font">BIZCHECK</p>
-        <Dropdown as={ButtonGroup}>
-          <Button href="/Login" className="butt">Sign in</Button>
-
-          <Dropdown.Toggle split className="butt" id="dropdown-split-basic" />
+        <Dropdown as={ButtonGroup} >
+          {/* <Button href="/Login" className="sign-butt">Sign in</Button> */}
+          <Bizbtn name="Sign in" path="/Login" color="#5558b0" textColor="#ffffff"/>
+   
+          {/* <Dropdown.Toggle split className="sign-butt-drop" id="dropdown-split-basic" />
 
           <Dropdown.Menu>
             <Dropdown.Item href="/Register">Sign up</Dropdown.Item>
-          </Dropdown.Menu>
+          </Dropdown.Menu> */}
+
         </Dropdown>
       </div>
       <div className="slogan">

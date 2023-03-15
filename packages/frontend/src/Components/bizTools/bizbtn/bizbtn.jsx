@@ -6,7 +6,7 @@ function bizbtn(props) {
   return (
     <div>
       <Link to={props.path} style={{ textDecoration: "none" }}>
-        <button type="button" className="btn biz-button" style={{background: props.color}}>
+        <button type="button" className="btn biz-button" style={{background: props.color, color: props.textColor}}>
           {props.name}
         </button>
       </Link>

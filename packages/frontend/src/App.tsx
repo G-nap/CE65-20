@@ -66,8 +66,7 @@ function App() {
               <Route path="/OperationCost" element={<OperationCostPage />} />
               <Route path="/Revenue" element={<RevenuePage />} />
               <Route path="/Miscellaneous" element={<MiscellaneousPage />} />
-              <Route path="/FFC" element={<FFCPage />} />
-              <Route path="/Statements" element={<StatementsPage />} />
+              <Route path="/ffc" element={<FFCPage />} />
               <Route path="/Statements" element={<StatementsPage />} />
               <Route path="*" element={<LandingPage />} />
               {/* <Route path="/NewInvestmentProject" element={<NewInvestmentProject />} /> */}

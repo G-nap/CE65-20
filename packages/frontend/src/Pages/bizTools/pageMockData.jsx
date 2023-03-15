@@ -6,17 +6,17 @@ const BIZTOOL_PAGE_MOCKDATA = {
     totalInvestment: {
         data: [
             {
-                tableId: 1,
-                title: "ร้านตัดผม",
-                rowData: [
+                tableId: 1,//_id-
+                title: "ร้านตัดผม", //name-
+                rowData: [//investments-
                     {
-                        rowId: 1,
+                        rowId: 1,//_id-
                         data:
                             [
-                                { colId: 1, val: "ค่าที่ดิน" },
-                                { colId: 2, val: 1200000 },
-                                { colId: 3, val: "สินทรัพย์ถาวรที่มีตัวตน" },
-                                { colId: 4, val: new Date() },
+                                { colId: 1, val: "ค่าที่ดิน" }, //name _id
+                                { colId: 2, val: 1200000 }, //amount
+                                { colId: 3, val: "สินทรัพย์ถาวรที่มีตัวตน" }, //account_id
+                                { colId: 4, val: new Date() }, //start_date
                             ]
                     },
                     {
@@ -97,7 +97,72 @@ const BIZTOOL_PAGE_MOCKDATA = {
     revenue: {
         data: {
             serviceData: [
-
+                {
+                    tableId: 1, //_id
+                    title: "ค่าบริการ",//name
+                    rowData: [//services
+                        {
+                            rowId: 1,
+                            data:
+                                [
+                                    { colId: 1, val: "บริการทำสีผมหญิง" }, //name
+                                    { colId: 2, val: 2 }, //unit
+                                    { colId: 3, val: "ที่นั่ง" }, //unit_name
+                                    { colId: 4, val: 10 }, //serve_per_unit
+                                    { colId: 5, val: 1500 }, //revenue_per_service
+                                    { colId: 6, val: 60 }, //cost_per_service
+                                    { colId: 7, val: "ปี" },
+                                    { colId: 8, val: "ปี" },
+                                    { colId: 9, val: new Date() }, //start_date
+                                ]
+                        },
+                        {
+                            rowId: 2,
+                            data:
+                                [
+                                    { colId: 1, val: "บริการทำสีผมชาย" },
+                                    { colId: 2, val: 2 },
+                                    { colId: 3, val: "ที่นั่ง" },
+                                    { colId: 4, val: 10 },
+                                    { colId: 5, val: 1500 },
+                                    { colId: 6, val: 60 },
+                                    { colId: 7, val: "ปี" },
+                                    { colId: 8, val: "ปี" },
+                                    { colId: 9, val: new Date() },
+                                ]
+                        },
+                        {
+                            rowId: 3,
+                            data:
+                                [
+                                    { colId: 1, val: "บริการตัดผมชาย" },
+                                    { colId: 2, val: 3 },
+                                    { colId: 3, val: "ที่นั่ง" },
+                                    { colId: 4, val: 10 },
+                                    { colId: 5, val: 1500 },
+                                    { colId: 6, val: 60 },
+                                    { colId: 7, val: "ปี" },
+                                    { colId: 8, val: "ปี" },
+                                    { colId: 9, val: new Date() },
+                                ]
+                        },
+                        {
+                            rowId: 4,
+                            data:
+                                [
+                                    { colId: 1, val: "บริการตัดผมหญิง" },
+                                    { colId: 2, val: 3 },
+                                    { colId: 3, val: "ที่นั่ง" },
+                                    { colId: 4, val: 10 },
+                                    { colId: 5, val: 1500 },
+                                    { colId: 6, val: 60 },
+                                    { colId: 7, val: "ปี" },
+                                    { colId: 8, val: "ปี" },
+                                    { colId: 9, val: new Date() },
+                                ]
+                        },
+                    ]
+                },
             ],
             productData: [
 

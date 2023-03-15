@@ -14,19 +14,22 @@
   color: #2f317a;
 }
 
-.butt { 
+
+.sign-butt { 
   display: flex;
   background-color: #5558b0;
   color: white;
+  width: 100px;
   height: 40px;
   border-radius: 10px;
   border: #5558b0;
   padding: 1rem;
   align-items: center;
- 
+  text-align: center;
+
 }
 
-.butt:hover {
+.sign-butt:hover {
   background-color: #4b4e9c;
   color: white;
 }

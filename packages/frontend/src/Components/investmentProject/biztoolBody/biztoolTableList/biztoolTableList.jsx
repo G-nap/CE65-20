@@ -4,9 +4,10 @@ import BiztoolTable from './biztoolTable/biztoolTable'
 const BiztoolTableList = (props) => {
   return (
     <div>
+      {/* {JSON.stringify(props.data)} */}
       {props.data.map((eachTable) =>
         <BiztoolTable
-          key={eachTable.tableId}
+          key={eachTable._id}
           eachTable={eachTable}
           type={props.type}
           tableStyle={props.tableStyle} 

@@ -11,7 +11,7 @@ import FFCFive from "../../../components/ffc/ffcFive/ffcFive";
 import FFCSix from "../../../components/ffc/ffcSix/ffcSix";
 import BiztoolHeader from "../../../components/investmentProject/biztoolHeader/biztoolHeader";
 
-function FFCPage() {
+function ffcPage() {
   const [page, setPage] = useState("pageone");
 
   const [config, setConfig] = useState({
@@ -84,5 +84,5 @@ function FFCPage() {
   );
 }
 
-export default FFCPage;
+export default ffcPage;
 
