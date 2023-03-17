@@ -49,7 +49,7 @@ function infoProject(props) {
   const [imageUrl, setImageUrl] = useState("")
   const [imageName, setImageName] = useState("")
   const [projectionPeriod, setprojectionPeriod] = useState()
-  const [saleTrends, setSaleTrends] = useState()
+  const [saleTrends, setSaleTrends] = useState([])
   const [selectedBusinessGoals, setselectedBusinessGoals] = useState()
 
   const getCurrencyById = async (id) => {
@@ -120,10 +120,12 @@ function infoProject(props) {
       resetValue()
     }
     setCounter(counter + 1)
+    alert('sale trends!')
+    alert(saleTrends)
   }, [isLoaded, selectedCurrency, selectedIndustries, imageName, doSubmitCheck, projectionPeriod])
 
   const doSubmit = (event) => {
-    if (file) uploadData()
+    if(isLoaded){if (file) uploadData()
     const ToUploadProjectShallow = {
       ...selectedProject,
       user_id: selectedProject.user_id,
@@ -146,7 +148,7 @@ function infoProject(props) {
     }
     // alert(selectedIndustryIds)
     setDoSubmitCheck(true)
-    setProjectShallow(ToUploadProjectShallow)
+    setProjectShallow(ToUploadProjectShallow)}
   }
 
   const uploadData = async () => {
@@ -418,6 +420,7 @@ function infoProject(props) {
           <div className="d-flex mt-2">
             <div className="w-100 ">
               <div className="text-center ">แนวโน้มยอดขาย</div>
+              <div>{saleTrends.length}</div>
               {saleTrends.map((eachTrend) =>
                 <div className="d-flex">
                   <div className="w-50 sale-trend-box">{`ปีที่ ${eachTrend.year}`}</div>
@@ -432,6 +435,11 @@ function infoProject(props) {
                   />
                 </div>
               )}
+              {/* <div className="text-center ">แนวโน้มยอดขาย</div>
+              {counter >= round && <div>
+                {saleTrends?JSON.stringify(saleTrends):'yes'}
+                </div>
+              } */}
             </div>
             <div className="w-100 ">
               <div className="text-center ">เป้าหมายธุรกิจ</div>
