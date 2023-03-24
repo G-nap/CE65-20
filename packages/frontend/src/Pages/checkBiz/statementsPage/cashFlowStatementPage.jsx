@@ -26,11 +26,11 @@ const cashFlowStatement = () => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
       pdf.addImage(imgData, "JPEG", 0, 0);
-      // pdf.output('dataurlnewwindow');
-      // pdf.save("cashflow_statement.pdf");
+      pdf.output('dataurlnewwindow');
+      pdf.save("cashflow_statement.pdf");
       ///////to png
-      var newTab = window.open("about:blank", "image from canvas");
-      newTab.document.write("<img src='" + imgData + "' alt='from canvas'/>");
+      // var newTab = window.open("about:blank", "image from canvas");
+      // newTab.document.write("<img src='" + imgData + "' alt='from canvas'/>");
     });
   };
 

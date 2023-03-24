@@ -7,29 +7,72 @@ const cashFlowDocument = () => {
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">การแสเงิยสด</th>
+            <th scope="col">ราคา(บาท)</th>
+            <th scope="col">ประเภททรัพย์สิน</th>
+            <th scope="col">วันที่</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">กระแสเงินสดจากการดำเนินการ</th>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
           </tr>
           <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>เงินสดรับจากการขายสินค้า</td>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td>เงินสดจ่ายจาการซื้อสินค้า</td>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
+          </tr>
+          <tr>
+            <td>เงินสดจ่ายจากเงินเดือน</td>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
+          </tr>
+          <tr>
+            <th scope="row">การแสเงินสดจากกิจกรรมลงทุน</th>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
+          </tr>
+          <tr>
+            <td>เงินสดรับจากการขายที่ดิน</td>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
+          </tr>
+          <tr>
+            <td>เงินสดจ่ายจากการขายอุปกรณ์</td>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
+          </tr>
+          <tr>
+            <th scope="row">กระแสเงินสดจากกิจกรรมการจัดหาเงิน</th>
+            <td>20,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
+          </tr>
+          <tr>
+            <td>เงินสดจ่ายจากการชำระเงินกู้</td>
+            <td>50,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
+          </tr>
+          <tr>
+            <td>เงินสดรับจากการขายหุ้น</td>
+            <td>150,000</td>
+            <td>ทรัพย์สิน</td>
+            <td>24/3/2566</td>
           </tr>
         </tbody>
       </table>
