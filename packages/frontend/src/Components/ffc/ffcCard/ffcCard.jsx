@@ -32,18 +32,16 @@ const ffcCard = (props) => {
     const cbf = checkbizFormula();
     const totalInvestment = cbf.calculateInvestment();
     const { totalRevenue, totalRevenue_MIN } = cbf.calculateRevenue();
-    const { totalIncomeDebt, totalExpendDebt, netDebt } = cbf.calculateMiscellaneous();
     const totalFixedCost = cbf.calculateTotalFixdcost();
-
-    let netincome = totalRevenue.map((revenue, index) => revenue - totalFixedCost[index]);
 
     const yearRange = cbf.calculateYearRange();
 
+    const { totalRevenue_year, } = cbf.calculateRevenue_fix();
     const totalCFO = cbf.calculateCFO();
     const totalCFI = cbf.calculateCFI2();
-    const totalCFF = cbf.calculateCFF();
-
-    let CfoCfi = totalCFO.map((cfo, index) => cfo + totalCFI[index]);
+    const { totalCFF, totalIncomeDebt, totalExpendDebt } = cbf.calculateCFF();
+    let netIncome = (totalRevenue_year.map((each, i) => each - totalFixedCost[i]))
+    let CfoCfi = netIncome.map((cfo, index) => cfo + totalCFI[index]);
     let netCashflow = totalCFF.map((cff, index) => cff + CfoCfi[index]);
 
 
