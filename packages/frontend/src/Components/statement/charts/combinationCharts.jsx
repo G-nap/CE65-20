@@ -95,19 +95,19 @@ export default function CombinationCharts(props) {
 						tension: 0.4,
 						data: [50, 25, 12, 48]
 					},
-					{
-						type: 'line',
-						label: 'กำไร(ขาดทุน)-min',
-						// borderColor: documentStyle.getPropertyValue('--blue-500'),
-						borderColor: "#cccccc",
-						borderWidth: 2,
-						fill: false,
-						tension: 0.4,
-						data: [0, 0, 0, 0]
-					},
+					// {
+					// 	type: 'line',
+					// 	label: 'กำไร(ขาดทุน)-min',
+					// 	// borderColor: documentStyle.getPropertyValue('--blue-500'),
+					// 	borderColor: "#cccccc",
+					// 	borderWidth: 2,
+					// 	fill: false,
+					// 	tension: 0.4,
+					// 	data: [0, 0, 0, 0]
+					// },
 					{
 						type: 'bar',
-						label: 'กระแสเงินสดรับ',
+						label: 'เงินสดรับ',
 						data: [2, 84, 24, 75],
 						backgroundColor: 'rgba(75, 192, 192, 0.2)',
 						borderColor: 'rgb(75, 192, 192)',
@@ -115,7 +115,7 @@ export default function CombinationCharts(props) {
 					},
 					{
 						type: 'bar',
-						label: 'กระแสเงินสดจ่าย',
+						label: 'เงินสดจ่าย',
 						data: [4000, 3200, 2400, 1400],
 						backgroundColor: 'rgba(153, 102, 255, 0.2)',
 						borderColor: 'rgb(153, 102, 255)',
@@ -181,18 +181,18 @@ export default function CombinationCharts(props) {
 
 			data.labels = yearRange
 			shallowDataDatasets = shallowDataDatasets.map(d => {
-				if (d.label === "กระแสเงินสดรับ") {
+				if (d.label === "เงินสดรับ") {
 					d.data = totalRevenue
 				}
-				if (d.label === "กระแสเงินสดจ่าย") {
+				if (d.label === "เงินสดจ่าย") {
 					d.data = totalFixedCost
 				}
 				if (d.label === "กำไร(ขาดทุน)") {
 					d.data = netIncome
 				}
-				if (d.label === "กำไร(ขาดทุน)-min") {
-					d.data = netIncome_MIN
-				}
+				// if (d.label === "กำไร(ขาดทุน)-min") {
+				// 	d.data = netIncome_MIN
+				// }
 				return shallowDataDatasets
 			})
 			shallowData = {

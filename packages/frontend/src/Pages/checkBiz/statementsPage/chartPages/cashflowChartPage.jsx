@@ -25,13 +25,15 @@ import checkbizFormula from "../../../../components/checkbiz/checkbizFormula/che
 const cashflowChartPage = (props) => {
 
   const cbf = checkbizFormula();
-  const { totalRevenue, totalRevenue_MIN} = cbf.calculateRevenue();
+  const { totalRevenue, totalRevenue_MIN, totalRevenue_per_year} = cbf.calculateRevenue();
+  const { totalRevenue_year, } = cbf.calculateRevenue_fix();
   const totalFixedCost = cbf.calculateTotalFixdcost();
   const yearRange = cbf.calculateYearRange();
   const totalCFO = cbf.calculateCFO();
-  const totalCFI = cbf.calculateCFI();
-  const totalCFF = cbf.calculateCFF();
+  const totalCFI = cbf.calculateCFI2();
+  const {totalCFF} = cbf.calculateCFF();
 
+  let netIncome = (totalRevenue_year.map((each, i) => each - totalFixedCost[i]))
 
   // const [newRevenuePerService, setNewRevenuePerService] = useState(null);
   // const config = BIZTOOL_PAGE_CONFIG.revenue
@@ -236,7 +238,8 @@ const cashflowChartPage = (props) => {
  
             <CombinationCharts
               data_type="cashflow"
-              totalCFO={totalCFO}
+              // totalCFO={totalCFO}
+              totalCFO={netIncome}
               totalCFI={totalCFI}
               totalCFF={totalCFF}
               yearRange={yearRange}

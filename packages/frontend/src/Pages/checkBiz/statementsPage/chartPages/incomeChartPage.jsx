@@ -18,7 +18,8 @@ import checkbizFormula from "../../../../components/checkbiz/checkbizFormula/che
 const incomeChartPage = (props) => {
 
   const cbf = checkbizFormula();
-  const { totalRevenue, totalRevenue_MIN} = cbf.calculateRevenue();
+  const { totalRevenue_per_year, totalRevenue, totalRevenue_MIN} = cbf.calculateRevenue();
+  const { totalRevenue_year, } = cbf.calculateRevenue_fix();
   const totalFixedCost = cbf.calculateTotalFixdcost();
   const yearRange = cbf.calculateYearRange();
 
@@ -176,7 +177,7 @@ const incomeChartPage = (props) => {
             {/* <div>{calculateYearRange()}</div> */}
             <CombinationCharts
               data_type="income"
-              totalRevenue={totalRevenue}
+              totalRevenue={totalRevenue_year}
               total_fixed_cost={totalFixedCost}
               totalRevenue_MIN={totalRevenue_MIN}
               yearRange={yearRange}
@@ -191,7 +192,7 @@ const incomeChartPage = (props) => {
                 {/* <AiOutlineDoubleLeft /> */}
               </div>
 
-              <div className="table-name-side-text">รายได้การบริการ/วัน</div>
+              <div className="table-name-side-text">รายได้ต่อการบริการ</div>
               <div className="">
                 {/* <div>
                   <EditInputOnSidebar
@@ -230,7 +231,7 @@ const incomeChartPage = (props) => {
 
 
               <div className="table-name-side-text">
-                รายได้การขายสินค้า/วัน
+                รายได้การขายสินค้าเฉลี่ย/วัน
               </div>
               {/* <EditInputOnSidebar
                 name="รวมรายได้จากการขายสินค้า/วัน"
@@ -265,7 +266,7 @@ const incomeChartPage = (props) => {
               ))}
 
 
-              <div className="table-name-side-text">รายจ่าย/วัน</div>
+              <div className="table-name-side-text">รายจ่าย/เดือน</div>
               {/* <EditInputOnSidebar
                 name="รวมรายจ่าย"
                 type="text"

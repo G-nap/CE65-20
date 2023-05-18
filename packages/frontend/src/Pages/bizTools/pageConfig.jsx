@@ -243,8 +243,8 @@ const BIZTOOL_PAGE_CONFIG = {
             // },
             {
               colId: 4,
-              title: "บริการได้(หน่วย)/วัน",
-              width: 140,
+              title: "จำนวนที่บริการได้/วัน",
+              width: 190,
               type: "money",
               backgroundColor: "#ffffff",
               color: "#000000",
@@ -252,7 +252,7 @@ const BIZTOOL_PAGE_CONFIG = {
             },
             {
               colId: 5,
-              title: "รายได้เฉลี่ย/วัน/บริการ",
+              title: "รายได้/บริการ",
               width: 160,
               type: "money",
               backgroundColor: "#ffffff",

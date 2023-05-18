@@ -35,7 +35,8 @@
 }
 
 .side-edit-input-name {
-  width: 110px;
+  width: 100px;
+  height: 40px;
   font-size: 14px;
   color: #2e148b;
 }
@@ -43,11 +44,21 @@
 .side-edit-input-box {
   width: 40%;
   height: 30px;
+  font-size: 14px;
   border-radius: 1px;
   border: none;
   border-bottom: 2px solid #2e148b;
   text-align: right;
   color: #2e148b;
+}
+.side-edit-x {
+
+  font-size: 12px;
+  /* border-radius: 1px;
+  border: none;
+  border-bottom: 2px solid #2e148b;
+  text-align: right;
+  color: #2e148b; */
 }
 
 .side-edit-result {

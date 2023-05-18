@@ -30,49 +30,36 @@ import checkbizFormula from "../../checkbiz/checkbizFormula/checkbizFormula";
 const ffcCard = (props) => {
 
     const cbf = checkbizFormula();
+    const totalInvestment = cbf.calculateInvestment();
     const { totalRevenue, totalRevenue_MIN } = cbf.calculateRevenue();
+    const { totalIncomeDebt, totalExpendDebt, netDebt } = cbf.calculateMiscellaneous();
     const totalFixedCost = cbf.calculateTotalFixdcost();
+
+    let netincome = totalRevenue.map((revenue, index) => revenue - totalFixedCost[index]);
+
     const yearRange = cbf.calculateYearRange();
+
     const totalCFO = cbf.calculateCFO();
-    const totalCFI = cbf.calculateCFI();
+    const totalCFI = cbf.calculateCFI2();
     const totalCFF = cbf.calculateCFF();
+
     let CfoCfi = totalCFO.map((cfo, index) => cfo + totalCFI[index]);
     let netCashflow = totalCFF.map((cff, index) => cff + CfoCfi[index]);
 
 
-    // const [tableName, setTableName] = useState("");
-    // const [newRevenuePerService, setNewRevenuePerService] = useState(null);
-    // const config = BIZTOOL_PAGE_CONFIG.revenue
-    // const [tableService, setTableService] = useState();
-    // const [service, setService] = useState();
-    // const [revenuePerService, setRevenuePerService] = useState();
-    // const [message, setMessage] = useState("");
-    // const [sidebar, setSidebar] = useState(true);
-    // const showSidebar = () => setSidebar(!sidebar);
+    let initialInvestment = totalCFI[0];
 
-    // const handleChange = (event) => {
-    //     setMessage(event.target.value);
-    //     console.log("value is:", event.target.value);
-    // };
+    const { inv_names, inv_amounts } = cbf.calculateInitialInvestment_for_chart();
+    const { expense_names, expense_amounts } = cbf.calculateFixedCost_for_chart();
+    const { revenue_service_names, revenue_service_amounts } = cbf.calculateRevenue_service_for_chart();
+    const { revenue_product_names, revenue_product_amounts } = cbf.calculateRevenue_product_for_chart();
+
+
+
+    // const NPV = cbf.calculateNPV(initialInvestment, cashFlows, discountRate);
 
 
     const [chart, setChart] = useState(false);
-    // const totalRevenue = [];
-    // const totalFixedCost = [];
-    // const totalCFO = [];
-    // const totalCFI = [0, 0, 0];
-    // const totalCFF = [];
-    let totalInvestment = 0;
-    // const yearRange = [2565, 2566, 2567, 2568];
-
-    const inv_names = [];
-    const inv_amounts = [];
-    const expense_names = [];
-    const expense_amounts = [];
-    const revenue_service_names = [];
-    const revenue_service_amounts = [];
-    const revenue_product_names = [];
-    const revenue_product_amounts = [];
 
 
     const dispatch = useDispatch();
@@ -176,23 +163,6 @@ const ffcCard = (props) => {
             }
         );
 
-        // shallowInvestmentTables = shallowInvestmentTables.map(
-        //   (eachTableInvestment) => {
-        //     if (eachTableInvestment._id === tableID) {
-        //       eachTableInvestment.investments = eachTableInvestment.investments.map(
-        //         (eachInvestment) => {
-        //           if (eachInvestment._id === unitID) {
-        //             if (eachInvestment.amount !== amountPerUnit) {
-        //               eachInvestment.amount = amountPerUnit;
-        //             }
-        //           }
-        //           return eachInvestment;
-        //         }
-        //       );
-        //     }
-        //     return eachTableInvestment;
-        //   }
-        // );
 
         // Find the index of the table with the matching ID
         const tableIndex = shallowInvestmentTables.findIndex((table) => table._id === tableID);
@@ -228,154 +198,6 @@ const ffcCard = (props) => {
             updateProject({ id: selectedProject._id, data: shallowSelectedProject })
         );
     };
-
-
-    function calculateRevenue_service() {
-        let sum_service_revenue = 0;
-        tableRevenueData.service_tables.forEach((tableService) => {
-            tableService.services.forEach((eachService) => {
-                sum_service_revenue += eachService.revenue_per_service;
-            });
-        });
-        return sum_service_revenue;
-    }
-    function calculateRevenue_product() {
-        let sum_product_revenue = 0;
-        tableRevenueData.product_tables.forEach((tableProduct) => {
-            tableProduct.products.forEach((eachProduct) => {
-                sum_product_revenue += eachProduct.revenue_per_unit;
-            });
-        });
-        return sum_product_revenue;
-    }
-
-    function calculateRevenue() {
-        let totalValue = 0;
-        totalValue = calculateRevenue_service() + calculateRevenue_product();
-        totalRevenue.push(totalValue);
-        return totalValue;
-    }
-
-    function calculateFixedCost() {
-        let sum_fixed_cost = 0;
-        tableExpenseData.fixed_cost_tables.forEach((tableFixedCost) => {
-            tableFixedCost.fixed_costs.forEach((eachFixedCost) => {
-                sum_fixed_cost += eachFixedCost.amount;
-            });
-        });
-        return sum_fixed_cost;
-    }
-
-
-
-    function calculateCFO() {
-        let result = 0
-        result = calculateRevenue() - calculateFixedCost();
-        return result
-    }
-
-    function calculateCFI() {
-        let result = 0
-        return result
-    }
-
-    function calculateCFF() {
-        let result = 0
-        return result
-    }
-
-    // function netCashflow() {
-    //     let result = 0
-    //     result = calculateCFO() + calculateCFI() + calculateCFF()
-    //     return result
-    // }
-    ////////////////////////////////////////////
-    function total_CFO() {
-        let sum_fixed_cost = 0;
-        let increase = 0;
-        let sum_service_revenue = 0;
-        let sum_product_revenue = 0;
-
-        tableRevenueData.service_tables.forEach((tableService) => {
-            tableService.services.forEach((eachService) => {
-                sum_service_revenue += eachService.revenue_per_service;
-            });
-        });
-
-        tableRevenueData.product_tables.forEach((tableProduct) => {
-            tableProduct.products.forEach((eachProduct) => {
-                sum_product_revenue += eachProduct.revenue_per_unit;
-            });
-        });
-
-        tableExpenseData.fixed_cost_tables.map((tableFixedCost) => {
-            tableFixedCost.fixed_costs.map((eachFixedCost) => {
-                sum_fixed_cost += eachFixedCost.amount;
-                increase = eachFixedCost.cost_increase
-            });
-        });
-
-
-
-        // ปีแรก
-        // totalFixedCost.push(sum_fixed_cost + sum_investment);
-        totalCFO.push(sum_service_revenue + sum_product_revenue - sum_fixed_cost);
-
-        for (let i = 1; i < modelConfig.projection_period; i++) {
-            sum_fixed_cost += sum_fixed_cost * (increase / 100)
-            increase += increase
-            totalCFO.push(sum_service_revenue + sum_product_revenue - sum_fixed_cost);
-        }
-        // return sum_fixed_cost
-    }
-    function total_CFI() {
-        let sum_investment = 0;
-        tableExpenseData.investment_tables.map((table) => {
-            table.investments.map((eachData) => {
-                sum_investment += eachData.amount
-            })
-        })
-
-        // ปีแรก
-        // totalFixedCost.push(sum_fixed_cost + sum_investment);
-        totalCFI.unshift(-sum_investment);
-
-    }
-    function total_CFF() {
-        let total = 0;
-        let increase = 0;
-        let sum_debt = 0;
-        let sum_equity = 0;
-
-        tableMiscellaneousData.debt_issuance.forEach((table) => {
-            table.payments.map((eachData) => {
-                //year?
-                // sum_debt += eachData.amount;
-                totalCFF.push(-eachData.amount);
-            })
-        });
-
-        // tableMiscellaneousData.equity_contribution.forEach((table) => {
-        //   sum_equity += table.amount;
-        // });
-
-
-
-        // for (let i = 1; i < modelConfig.projection_period; i++) {
-        //   totalCFF.push(sum_equity - sum_debt);
-        // }
-
-    }
-
-    //////////////////////////////////////////// FFC 5
-
-    function calculateInitialInvestment() {
-        tableExpenseData.investment_tables.forEach((table) => {
-            table.investments.forEach((eachCost) => {
-                totalInvestment += eachCost.amount;
-            });
-        });
-    }
 
 
     function calculateCashFlows(initialInvestment, annualGrowthRate, numberOfYears) {
@@ -441,41 +263,7 @@ const ffcCard = (props) => {
         return profitabilityIndex.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     }
-    ///////////////////////////////////////////////////// FOR CHART
 
-    function calculateInitialInvestment_for_chart() {
-        tableExpenseData.investment_tables.map((table) => {
-            table.investments.map((eachCost) => {
-                inv_names.push(eachCost.name)
-                inv_amounts.push(eachCost.amount)
-            });
-        });
-    }
-    function calculateFixedCost_for_chart() {
-        tableExpenseData.fixed_cost_tables.map((tableFixedCost) => {
-            tableFixedCost.fixed_costs.map((eachFixedCost) => {
-                expense_names.push(eachFixedCost.name)
-                expense_amounts.push(eachFixedCost.amount)
-            });
-        });
-    }
-    function calculateRevenue_service_for_chart() {
-        tableRevenueData.service_tables.map((tableService) => {
-            tableService.services.map((eachService) => {
-                revenue_service_names.push(eachService.name)
-                revenue_service_amounts.push(eachService.revenue_per_service)
-            });
-        });
-    }
-    function calculateRevenue_product_for_chart() {
-        tableRevenueData.product_tables.map((tableProduct) => {
-            tableProduct.products.map((eachProduct) => {
-                revenue_product_names.push(eachProduct.name)
-                revenue_product_amounts.push(eachProduct.revenue_per_unit)
-            });
-        });
-    }
-    //////////////////////////////////////////// FFC 5 ;
 
 
     return (
@@ -496,7 +284,6 @@ const ffcCard = (props) => {
                         <div className="ffc-card-body-chart">
                             {props.type == "total-investment" &&
                                 <div>
-                                    <div>{calculateInitialInvestment_for_chart()}</div>
                                     <CombinationCharts
                                         className="combination-charts"
                                         data_type={props.type}
@@ -507,7 +294,6 @@ const ffcCard = (props) => {
                             }
                             {props.type == "expense" &&
                                 <div>
-                                    <div>{calculateFixedCost_for_chart()}</div>
                                     <CombinationCharts
                                         className="combination-charts"
                                         data_type={props.type}
@@ -518,7 +304,7 @@ const ffcCard = (props) => {
                             }
                             {props.type == "revenue-service" &&
                                 <div>
-                                    <div>{calculateRevenue_service_for_chart()}</div>
+
                                     <CombinationCharts
                                         className="combination-charts"
                                         data_type={props.type}
@@ -529,7 +315,7 @@ const ffcCard = (props) => {
                             }
                             {props.type == "revenue-product" &&
                                 <div>
-                                    <div>{calculateRevenue_product_for_chart()}</div>
+
                                     <CombinationCharts
                                         className="combination-charts"
                                         data_type={props.type}
@@ -541,19 +327,14 @@ const ffcCard = (props) => {
                             {props.type == "cashflow" &&
                                 <div>
                                     <CombinationCharts
-                                        className="combination-charts"
-                                        data_type={props.type}
-                                        totalCFO={calculateCFO()}
-                                        totalCFI={calculateCFI()}
-                                        totalCFF={calculateCFF()}
-                                        inv_names={inv_names}
-                                    // inv_amounts={inv_amounts}
+                                        data_type="cashflow"
+                                        totalCFO={totalCFO}
+                                        totalCFI={totalCFI}
+                                        totalCFF={totalCFF}
+                                        yearRange={yearRange}
                                     />
                                 </div>
                             }
-
-
-
 
                         </div>
                         :
@@ -694,7 +475,7 @@ const ffcCard = (props) => {
                             }
                             {props.type === "total-investment" &&
                                 <table className="table table-sm ffc-table-text">
-                                    {calculateInitialInvestment()}
+                                    {/* {calculateInitialInvestment()} */}
                                     <thead>
                                         <tr>
                                             {/* <th style={{ width: "390px" }} scope="col">name</th>
@@ -708,18 +489,22 @@ const ffcCard = (props) => {
                                                 {table.investments.map((each) => (
                                                     <tr key={each._id}>
                                                         <td>{each.name}</td>
-                                                        <td>{each.amount}</td>
+                                                        <td>{cbf.moneyDisplay(each.amount)}</td>
                                                         <td>{each.start_date.substring(0, 10)}</td>
                                                     </tr>
                                                 ))}
                                             </React.Fragment>
                                         ))}
+                                        <tr>
+                                            {/* <th>เงินลงทุนสุทธิ</th>
+                                            <th>{totalCFI}</th> */}
+                                        </tr>
                                     </tbody>
                                 </table>
                             }
                             {props.type === "cashflow" &&
                                 <table className="table table-sm ffc-table-text">
-                                    {calculateInitialInvestment()}
+                                    {/* {calculateInitialInvestment()} */}
                                     <thead>
                                         <tr className="table">
                                             <th scope="col" className="dov-name-cell">รายการ</th>
@@ -740,44 +525,36 @@ const ffcCard = (props) => {
                                         </tr> */}
                                         <tr>
                                             <td className="dov-name-cell">ต้นทุนทางการเงิน</td>
-                                            {yearRange.map((i) => (
-                                                <td scope="col" className="dov-money-cell">{calculateFixedCost().toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                                            {totalFixedCost.map((i) => (
+                                                <td scope="col" className="dov-money-cell">{i.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                                             ))}
                                         </tr>
                                         <tr>
                                             <td className="dov-name-cell">รายได้ทางการเงิน</td>
-                                            {yearRange.map((i) => (
-                                                <td scope="col" className="dov-money-cell">{calculateRevenue().toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                                            {totalRevenue.map((i) => (
+                                                <td scope="col" className="dov-money-cell">{i.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                                             ))}
                                         </tr>
                                         <th className="dov-name-cell">กระแสเงินสดจากกิจกรรมลงทุน</th>
                                         <tr>
                                             <td className="dov-name-cell">ค่าใช้จ่ายการลงทุน</td>
-                                            {yearRange.map((i) => (
-                                                <td scope="col" className="dov-money-cell">{totalInvestment.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                                            {totalInvestment.map((i) => (
+                                                <td scope="col" className="dov-money-cell">{i.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                                             ))}
                                         </tr>
 
                                         <th className="dov-name-cell">กระแสเงินสดจากกิจกรรมจัดหาเงิน</th>
                                         <tr>
-                                            <td className="dov-name-cell">เงินสดจ่ายจากการชำระเงินกู้</td>
-                                            {(calculateCashFlows(totalInvestment, 0.7, 4)).map(eachYear => (
+                                            <td className="dov-name-cell">เงินสดรับจากการชำระเงินกู้</td>
+                                            {totalIncomeDebt.map(eachYear => (
                                                 // yearRange.map((i) => (
                                                 <td scope="col" className="dov-money-cell">{eachYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                                                 // ))
                                             ))}
                                         </tr>
                                         <tr>
-                                            <td className="dov-name-cell">เงินสดรับจากการขายหุ้น</td>
-                                            {(calculateCashFlows(totalInvestment, 0.7, 4)).map(eachYear => (
-                                                // yearRange.map((i) => (
-                                                <td scope="col" className="dov-money-cell">{eachYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                                                // ))
-                                            ))}
-                                        </tr>
-                                        <tr>
-                                            <td className="dov-name-cell">เงินสดจ่ายจากเงินปันผล</td>
-                                            {(calculateCashFlows(totalInvestment, 0.7, 4)).map(eachYear => (
+                                            <td className="dov-name-cell">เงินสดจ่ายจากการกู้ยืม</td>
+                                            {totalExpendDebt.map(eachYear => (
                                                 // yearRange.map((i) => (
                                                 <td scope="col" className="dov-money-cell">{eachYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                                                 // ))
@@ -785,7 +562,7 @@ const ffcCard = (props) => {
                                         </tr>
                                         <tr>
                                             <th className="dov-name-cell">กระแสเงินสดสุทธิ</th>
-                                            {(calculateCashFlows(totalInvestment, 0.7, 4)).map(eachYear => (
+                                            {netCashflow.map(eachYear => (
                                                 // yearRange.map((i) => (
                                                 <th scope="col" className="dov-money-cell">{eachYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
                                                 // ))
@@ -813,7 +590,7 @@ const ffcCard = (props) => {
                             }
                             {props.type === "financial-return" &&
                                 <table className="table table-sm ffc-table-text">
-                                    {calculateInitialInvestment()}
+                                    {/* {calculateInitialInvestment()} */}
                                     <thead>
                                         <tr>
                                             {/* <th style={{ width: "390px" }} scope="col">Financial Return</th>
@@ -830,7 +607,7 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {console.log("totalInvestment" + totalInvestment)}
-                                            <td>{calculateNPV(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4), 0.7)}</td>
+                                            <td>{calculateNPV(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
                                             {/* <td>{calculateNPV(initialInvestment, cashFlows, discountRate)}</td> */}
                                         </tr>
                                         {/* <tr>
@@ -846,7 +623,7 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {/* <td>{calculatePaybackPeriod(initialInvestment, cashFlows)}</td> */}
-                                            <td>{calculatePaybackPeriod(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4))}</td>
+                                            <td>{calculatePaybackPeriod(initialInvestment, netCashflow)}</td>
                                         </tr>
                                         <tr>
                                             <td>profitability index (PI)</td>
@@ -854,7 +631,7 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {/* <td>{calculateProfitabilityIndex(initialInvestment, cashFlows, discountRate)}</td> */}
-                                            <td>{calculateProfitabilityIndex(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4), 0.7)}</td>
+                                            <td>{calculateProfitabilityIndex(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
                                         </tr>
                                     </tbody>
 
@@ -862,7 +639,7 @@ const ffcCard = (props) => {
                             }
                             {props.type === "entrepreneurial-decision" &&
                                 <table className="table table-sm ffc-table-text">
-                                    {calculateInitialInvestment()}
+                                    {/* {calculateInitialInvestment()} */}
                                     <thead>
                                         <tr>
                                             {/* <th style={{ width: "390px" }} scope="col">Financial Return</th>
@@ -878,8 +655,8 @@ const ffcCard = (props) => {
                                             {/* <td></td>
                                             <td></td>
                                             <td></td> */}
-                                            {console.log("totalInvestment" + totalInvestment)}
-                                            <td>{totalInvestment}</td>
+                                            {console.log("totalInvestment" + initialInvestment)}
+                                            <td>{initialInvestment}</td>
                                             {/* <td>{calculateNPV(initialInvestment, cashFlows, discountRate)}</td> */}
                                         </tr>
                                         {/* <tr>
@@ -895,36 +672,13 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {/* <td>{calculatePaybackPeriod(initialInvestment, cashFlows)}</td> */}
-                                            <td>{calculatePaybackPeriod(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4))}</td>
+                                            <td>{calculatePaybackPeriod(initialInvestment, calculateCashFlows(initialInvestment, 0.7, 4))}</td>
                                         </tr>
                                         {/* <tr>
                                             <td>ประมาณการเติบโตของค่าใช้จ่ายต่อปี</td>
-                                            <td>{calculateProfitabilityIndex(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4), 0.7)}</td>
+                                            <td>{calculateProfitabilityIndex(totalInvestment, calculateCashFlows(initialInvestment, 0.7, 4), 0.7)}</td>
                                         </tr> */}
-                                        <tr>
-                                            <td>ประมาณการยอดขาย (ปีที่ 1 - n) จำนวนชิ้นต่อปี</td>
-                                            {/* <td></td>
-                                            <td></td>
-                                            <td></td> */}
-                                            {/* <td>{calculateProfitabilityIndex(initialInvestment, cashFlows, discountRate)}</td> */}
-                                            <td>{calculateProfitabilityIndex(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4), 0.7)}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ประมาณการราคาต่อชื้น</td>
-                                            {/* <td></td>
-                                            <td></td>
-                                            <td></td> */}
-                                            {/* <td>{calculateProfitabilityIndex(initialInvestment, cashFlows, discountRate)}</td> */}
-                                            <td>{calculateProfitabilityIndex(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4), 0.7)}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ประมาณการต้นทุนต่อชิ้น</td>
-                                            {/* <td></td>
-                                            <td></td>
-                                            <td></td> */}
-                                            {/* <td>{calculateProfitabilityIndex(initialInvestment, cashFlows, discountRate)}</td> */}
-                                            <td>{calculateProfitabilityIndex(totalInvestment, calculateCashFlows(totalInvestment, 0.7, 4), 0.7)}</td>
-                                        </tr>
+                                       
                                     </tbody>
 
                                 </table>
