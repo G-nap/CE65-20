@@ -129,3 +129,17 @@
   display: block;
   object-fit: fill;
 }
+
+.butt.signin.btn.btn-primary {
+min-width: 100px !important;
+}
+
+.butt.dropdown-style.dropdown-toggle.dropdown-toggle-split.btn.btn-primary {
+  background-color: #5558b0;
+  max-height: 40px !important;
+}
+
+.butt.dropdown-style.dropdown-toggle.dropdown-toggle-split.btn.btn-primary:hover {
+  background-color: #4b4e9c;
+  max-height: 40px !important;
+}
