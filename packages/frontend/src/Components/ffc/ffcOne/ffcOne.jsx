@@ -40,18 +40,17 @@ function ffcOne() {
 
   const onValChange = (input) => {
   
-
+    console.log('change');  
+    console.log(input);  
     let shallowffcReason = JSON.parse(
       JSON.stringify(input)
     );
-
-    
-
 
     let shallowSelectedProject = {
       ...selectedProject,
       ffcReason: shallowffcReason
     };
+
     dispatch(projectUpdated(shallowSelectedProject));
     dispatch(
       updateProject({ id: selectedProject._id, data: shallowSelectedProject })

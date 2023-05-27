@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 import URL from './../URL'
 
-const CREATE_URL = `https://${URL}/currency/post/`
-const FETCH_URL = `https://${URL}/currency/currencys`
-const UPDATE_URL = `https://${URL}/currency/edit?currencyID=`
-const DELETE_URL = `https://${URL}/currency/delete?currencyID=`
+const CREATE_URL = `${URL}/currency/post/`
+const FETCH_URL = `${URL}/currency/currencys`
+const UPDATE_URL = `${URL}/currency/edit?currencyID=`
+const DELETE_URL = `${URL}/currency/delete?currencyID=`
 
 const initialState = {
     currencies: [],

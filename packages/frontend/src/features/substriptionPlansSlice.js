@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 import URL from './../URL'
 
-const CREATE_URL = `https://${URL}/subscriptionPlan/post/`
-const FETCH_URL = `https://${URL}/subscriptionPlan/subscriptionPlans`
-const UPDATE_URL = `https://${URL}/subscriptionPlan/edit?subscriptionPlanID=`
-const DELETE_URL = `https://${URL}/subscriptionPlan/delete?subscriptionPlanID=`
+const CREATE_URL = `${URL}/subscriptionPlan/post/`
+const FETCH_URL = `${URL}/subscriptionPlan/subscriptionPlans`
+const UPDATE_URL = `${URL}/subscriptionPlan/edit?subscriptionPlanID=`
+const DELETE_URL = `${URL}/subscriptionPlan/delete?subscriptionPlanID=`
 
 const initialState = {
     subscriptionPlans: [],

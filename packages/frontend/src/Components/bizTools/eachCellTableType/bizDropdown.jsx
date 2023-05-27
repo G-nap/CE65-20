@@ -25,7 +25,7 @@ const bizDropdown = (props) => {
   const [selectDropdown, setSelectDropdown] = useState();
 
   const ASSET_ACOUNT_FETCH_URL =
-    `https://${URL}/assetAccount/assetAccounts`;
+    `${URL}/assetAccount/assetAccounts`;
   // const assetAccounts = useSelector(state => state.assetAccounts.assetAccounts)
 
   const onChangeHandle = (tableId, valueKey) => {

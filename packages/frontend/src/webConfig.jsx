@@ -1,1 +1,1 @@
-export const WEB_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/"
+export const URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/"

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import BiztoolButton from '../../components/common/biztoolButton/biztoolButton'
 import timeToShow from '../../components/common/timeToShow'
-import { WEB_URL } from '../../webConfig'
+import URL from '../../URL'
 import INPUT_TYPES from '../comparePage/createProjectInputTypes'
 import './createNewProject.css'
 
@@ -174,7 +174,7 @@ const CPTPage = (props) => {
                                 <div className='each-cp-input-header'>รูปภาพปัจจุบัน</div>
                                 {props.imageName !== "" ?
                                     <img src={`${props.previewImage}`} className='create-project-img-style' />
-                                    : <img src={`${WEB_URL}${props.data.logo_url}`} className='create-project-img-style' />}
+                                    : <img src={`${URL}${props.data.logo_url}`} className='create-project-img-style' />}
                                 <div>ภาพที่เลือก : {props.imageName !== "" ? props.imageName : "คุณยังไม่ได้เลือกรูปภาพ"} </div>
                                 {/* <div>ภาพที่เลือก : {props.} </div> */}
                                 <div>

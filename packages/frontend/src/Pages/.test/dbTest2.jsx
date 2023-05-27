@@ -15,7 +15,7 @@ function DBTest2() {
         params: { username: username },
         headers: { Authorization: `Bearer ${token}` }
       }
-      axios.get(`https://${URL}/user/username`,
+      axios.get(`${URL}/user/username`,
         config,
       )
         .then(res => {
@@ -48,7 +48,7 @@ function DBTest2() {
     const config = {
       params: {username: user.username}
     }
-    axios.put(`https://${URL}/user/update`,data, config,)
+    axios.put(`${URL}/user/update`,data, config,)
     .then(res => {
       setIsLoaded(false)
     })

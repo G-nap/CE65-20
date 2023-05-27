@@ -6,15 +6,14 @@ import "./infoProject2.css";
 
 import { projectUpdated, setSelectedProject, updateProject } from "../../../features/projectsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { WEB_URL } from "../../../webConfig";
 import axios from "axios";
 import timeToShow from "../../common/timeToShow";
 import INPUT_TYPES from "../../../pages/comparePage/createProjectInputTypes";
 import { useNavigate } from "react-router-dom";
-import URL from './../URL'
+import URL from './../../../URL'
 
 function infoProject(props) {
-  const INDUSTRY_CREATE_URL = `https://${URL}/industry/post/`
+  const INDUSTRY_CREATE_URL = `${URL}/industry/post/`
 
   const dispatch = useDispatch();
 
@@ -80,7 +79,7 @@ function infoProject(props) {
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
-      await axios.post(`https://${URL}/`, formData, {
+      await axios.post(`${URL}/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then(res => {
         setImageUrl(res.data.filename)
@@ -348,7 +347,7 @@ function infoProject(props) {
                 <div className='config-each-cp-input-header'>รูปภาพปัจจุบัน</div>
                 {imageName !== "" ?
                   <img src={`${previewImage}`} className='create-project-img-style' />
-                  : <img src={`${WEB_URL}${selectedProject.logo_url}`} className='create-project-img-style' />}
+                  : <img src={`${URL}${selectedProject.logo_url}`} className='create-project-img-style' />}
                 <div>ภาพที่เลือก : {imageName !== "" ? imageName : "คุณยังไม่ได้เลือกรูปภาพ"} </div>
                 <div>
                   <button

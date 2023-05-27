@@ -9,8 +9,8 @@ import { addNewProject, setSelectedProject, setShallowCreateProject } from '../.
 import BiztoolButton from '../../components/common/biztoolButton/biztoolButton'
 import axios from 'axios'
 
-const INDUSTRY_CREATE_URL = `https://${URL}/industry/post/`
-import URL from './../URL'
+import URL from '../../URL'
+const INDUSTRY_CREATE_URL = `${URL}/industry/post/`
 
 const CreateNewProject = (props) => {
   const dispatch = useDispatch();
@@ -316,7 +316,7 @@ const CreateNewProject = (props) => {
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
-      await axios.post(`https://${URL}/`, formData, {
+      await axios.post(`${URL}/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then(res => {
         setImageUrl(res.data.filename)

@@ -3,7 +3,7 @@ import URL from './../URL'
 
 export const apiSlice = createApi({
     reducerPath: 'api', // optional
-    baseQuery: fetchBaseQuery({ baseUrl: `https://${URL}` }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${URL}` }),
     tagTypes: ['Project', 'User'],
     endpoints: builder => ({})
 })

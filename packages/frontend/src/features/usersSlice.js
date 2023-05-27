@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
-
-const CREATE_URL = `https://${URL}/user/signup`
-const LOGIN_URL = `https://${URL}/auth/auth/login`
-const FETCH_URL = `https://${URL}/user/username`
-const UPDATE_URL = `https://${URL}/user/update?username`
-const DELETE_URL = `https://${URL}/user/delete?userID=`
+import URL from '../URL'
+const CREATE_URL = `${URL}/user/signup`
+const LOGIN_URL = `${URL}/auth/auth/login`
+const FETCH_URL = `${URL}/user/username`
+const UPDATE_URL = `${URL}/user/update?username`
+const DELETE_URL = `${URL}/user/delete?userID=`
 
 const initialState = {
     auth: {

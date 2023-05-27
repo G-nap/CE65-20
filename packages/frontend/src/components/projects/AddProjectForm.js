@@ -159,7 +159,7 @@ const AddProjectForm = () => {
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
-      await axios.post(`https://${URL}/`, formData, {
+      await axios.post(`${URL}/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then(res => {
         setImageUrl(res.data.filename)
