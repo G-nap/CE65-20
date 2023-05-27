@@ -9,6 +9,7 @@ import {
   VscListSelection,
 } from "react-icons/vsc";
 import { CiGrid41 } from "react-icons/ci";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import ProjectCard from "../../components/projects/projectCard/projectCard";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -148,7 +149,7 @@ function WorkSpacePage() {
                     document.getElementById(each._id).getBoundingClientRect().top,
                     each._id
                   )}>
-                ...
+                <BsThreeDotsVertical/>
               </button>
             </div>
           ))}
