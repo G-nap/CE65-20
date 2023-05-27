@@ -118,3 +118,7 @@ input:valid ~ label {
 .check-text {
     color: #5558b0;
 }
+
+.login-butt{
+  white-space:nowrap
+}

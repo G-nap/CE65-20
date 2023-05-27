@@ -39,7 +39,7 @@ function RegisterPage() {
 
   return (
     <div className="container">
-      <div className="row justify-content-center">
+      <div className=" row justify-content-center">
         <div className="col-sm-6">
           <img
             src={require("../../assets/register-img.png")}
@@ -111,14 +111,11 @@ function RegisterPage() {
                 required />
               <label>Confirm Password</label>
             </div>
-            <div className="form-group d-flex check-text mt-4">
-              <p><AiOutlineCheckCircle className="mx-1" />นิติบุคคล</p>
-              <p className="mx-4"><AiOutlineCheckCircle className="mx-1" />บุคคล</p>
-            </div>
+
             <div className="form-group d-flex justify-content-between">
               <div className="d-flex m-2 re-text align-baseline">
                 <p style={{ opacity: "0.5" }}>Already have an account ? &nbsp;</p>
-                <Link to="/Login" style={{ textDecoration: "none" }}>
+                <Link to="/Login" style={{ whiteSpace: "nowrap"}}>
                   <p>Sign in</p>
                 </Link>
               </div>
