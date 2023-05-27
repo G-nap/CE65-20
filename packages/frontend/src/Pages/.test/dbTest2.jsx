@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import URL from './../URL'
 
 function DBTest2() {
   const [user, setUser] = useState({});
@@ -14,7 +15,7 @@ function DBTest2() {
         params: { username: username },
         headers: { Authorization: `Bearer ${token}` }
       }
-      axios.get("https://sea-turtle-app-o8dz8.ondigitalocean.app/user/username",
+      axios.get(`https://${URL}/user/username`,
         config,
       )
         .then(res => {
@@ -47,7 +48,7 @@ function DBTest2() {
     const config = {
       params: {username: user.username}
     }
-    axios.put('https://sea-turtle-app-o8dz8.ondigitalocean.app/user/update',data, config,)
+    axios.put(`https://${URL}/user/update`,data, config,)
     .then(res => {
       setIsLoaded(false)
     })

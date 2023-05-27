@@ -6,7 +6,8 @@ import {
     fetchAssetAccounts,
     assetAccounts,
   } from "../../../features/assetAccountsSlice";
-
+  import URL from './../URL'
+  
 const bizDropdown = (props) => {
     const dispatch = useDispatch();
   const assetAccounts = useSelector(
@@ -24,7 +25,7 @@ const bizDropdown = (props) => {
   const [selectDropdown, setSelectDropdown] = useState();
 
   const ASSET_ACOUNT_FETCH_URL =
-    "https://sea-turtle-app-o8dz8.ondigitalocean.app/assetAccount/assetAccounts";
+    `https://${URL}/assetAccount/assetAccounts`;
   // const assetAccounts = useSelector(state => state.assetAccounts.assetAccounts)
 
   const onChangeHandle = (tableId, valueKey) => {

@@ -159,7 +159,7 @@ const AddProjectForm = () => {
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
-      await axios.post("https://sea-turtle-app-o8dz8.ondigitalocean.app/", formData, {
+      await axios.post(`https://${URL}/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then(res => {
         setImageUrl(res.data.filename)

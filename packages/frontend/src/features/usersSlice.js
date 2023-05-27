@@ -1,27 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
-const CREATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/signup"
-const LOGIN_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/auth/auth/login"
-const FETCH_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/username"
-const UPDATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/update?username"
-const DELETE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/delete?userID="
+const CREATE_URL = `https://${URL}/user/signup`
+const LOGIN_URL = `https://${URL}/auth/auth/login`
+const FETCH_URL = `https://${URL}/user/username`
+const UPDATE_URL = `https://${URL}/user/update?username`
+const DELETE_URL = `https://${URL}/user/delete?userID=`
 
-
-// user : {
-//     _id: "",
-//     name: "",
-//     surname: "",
-//     username: "",
-//     email: "",
-//     phone_number: "",
-//     password: "",
-//     payment_cards: [],
-//     subscription_plan_id: "",
-//     project_ids: [],
-//     is_cooperation: false,
-//     transaction_ids: [],
-// }
 const initialState = {
     auth: {
         isLoggedIn: false,
@@ -35,19 +20,6 @@ const initialState = {
     status: 'idle',
     error: null
 }
-
-// export const fetchUserByUsername = createAsyncThunk(
-//     'users/fetchUserByUsername',
-//     async (data) => {
-//         const response = await axios.get(`${FETCH_URL}`, {
-//             headers: {
-//                 'Authorization': `token ${data.token}`
-//                 // 'Authorization': `Bearer ${data.token}`
-//             }
-//         })
-//         return response.data
-//     }
-// )
 
 export const fetchUserByUsername = createAsyncThunk(
     'users/fetchUserByUsername',

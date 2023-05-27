@@ -1,11 +1,11 @@
 import React from 'react'
-
+import URL from './../URL'
 const dbTest1 = () => {
   return (
     <div>
       <div>test</div>
       <div>
-        <img src={`https://sea-turtle-app-o8dz8.ondigitalocean.app/1-d21a.png`} alt="abc" style={{width: '100%'}}/>
+        <img src={`https://${URL}/1-d21a.png`} alt="abc" style={{width: '100%'}}/>
       </div>
     </div>
   )

@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import { addNewProject, setSelectedProject, setShallowCreateProject } from '../../features/projectsSlice'
 import BiztoolButton from '../../components/common/biztoolButton/biztoolButton'
 import axios from 'axios'
-const INDUSTRY_CREATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/industry/post/"
+
+const INDUSTRY_CREATE_URL = `https://${URL}/industry/post/`
+import URL from './../URL'
 
 const CreateNewProject = (props) => {
   const dispatch = useDispatch();
@@ -314,7 +316,7 @@ const CreateNewProject = (props) => {
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
-      await axios.post("https://sea-turtle-app-o8dz8.ondigitalocean.app/", formData, {
+      await axios.post(`https://${URL}/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then(res => {
         setImageUrl(res.data.filename)

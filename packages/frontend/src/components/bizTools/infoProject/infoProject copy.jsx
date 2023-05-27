@@ -15,10 +15,11 @@ import BusinessGoalContent from "../../projects/businessGoal/businessGoalContent
 import CashflowContent from "../../projects/businessGoal/cashflowContent";
 import INPUT_TYPES from "../../../pages/comparePage/createProjectInputTypes";
 // import InitialPeriodMonths from "../../investmentProject/initialPeriodMonths";
+import URL from './../URL'
 
 function infoProject(props) {
-  const INDUSTRY_CREATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/industry/post/"
-  const CURRENCY_CREATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/currency/post/"
+  const INDUSTRY_CREATE_URL = `https://${URL}/industry/post/`
+  const CURRENCY_CREATE_URL = `https://${URL}/currency/post/`
 
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
@@ -144,7 +145,7 @@ function infoProject(props) {
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
-      await axios.post("https://sea-turtle-app-o8dz8.ondigitalocean.app/", formData, {
+      await axios.post(`https://${URL}/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then(res => {
         setImageUrl(res.data.filename)
