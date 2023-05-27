@@ -25,11 +25,15 @@ const incomeDocument = () => {
   const totalCFO = cbf.calculateCFO();
   const totalCFI = cbf.calculateCFI2();
   const totalCFF = cbf.calculateCFF();
-
-  let CfoCfi = totalCFO.map((cfo, index) => cfo + totalCFI[index]);
-  let netCashflow = totalCFF.map((cff, index) => cff + CfoCfi[index]);
-  let netIncome = (totalRevenue_year.map((each, i) => each - totalFixedCost[i]))
-
+  
+  let netCashflow = [];
+  if (Array.isArray(totalCFF)) {
+    let CfoCfi = totalCFO.map((cfo, index) => cfo + totalCFI[index]);
+    netCashflow = totalCFF.map((cff, index) => cff + CfoCfi[index]);
+  }
+  
+  let netIncome = totalRevenue_year.map((each, i) => each - totalFixedCost[i]);
+  
   let initialInvestment = totalCFI[0];
 
   const { inv_names, inv_amounts } = cbf.calculateInitialInvestment_for_chart();
@@ -138,7 +142,7 @@ const incomeDocument = () => {
                     <td className="dov-name-cell">{eachFixedCost.name}</td>
 
                     {saleTrends.map((st,i) => (
-                      <td scope="col" className="dov-money-cell">{(eachFixedCost.amount * eachFixedCost.unit * 12 * ((100 + (eachFixedCost.cost_increase*i))/100)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                      <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(eachFixedCost.amount * eachFixedCost.unit * 12 * ((100 + (eachFixedCost.cost_increase*i))/100)*(-1))}</td>
                     ))}
                     
                   </tr>
@@ -149,7 +153,7 @@ const incomeDocument = () => {
             <tr>
               <td scope="row" className="dov-border-cell">รวมรายจ่าย</td>
               {totalFixedCost.map((i) => (
-                <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
+                <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i*(-1))}</td>
               ))}
             </tr>
             <tr>

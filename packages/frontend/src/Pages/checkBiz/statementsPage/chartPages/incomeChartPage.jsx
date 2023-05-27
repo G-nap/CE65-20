@@ -18,7 +18,7 @@ import checkbizFormula from "../../../../components/checkbiz/checkbizFormula/che
 const incomeChartPage = (props) => {
 
   const cbf = checkbizFormula();
-  const { totalRevenue_per_year, totalRevenue, totalRevenue_MIN} = cbf.calculateRevenue();
+  const { totalRevenue_per_year, totalRevenue, totalRevenue_MIN } = cbf.calculateRevenue();
   const { totalRevenue_year, } = cbf.calculateRevenue_fix();
   const totalFixedCost = cbf.calculateTotalFixdcost();
   const yearRange = cbf.calculateYearRange();
@@ -158,7 +158,7 @@ const incomeChartPage = (props) => {
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
 
- 
+
   return (
     <div>
       <div className="d-flex sen-sidebar-container">
@@ -191,6 +191,12 @@ const incomeChartPage = (props) => {
               <div className="sen-sidebar-show" onClick={showSidebar}>
                 {/* <AiOutlineDoubleLeft /> */}
               </div>
+
+              {/* <div className="d-flex">
+                <div> วัน/ </div>
+                <div> เดือน/ </div>
+                <div> ปี/ </div>
+              </div> */}
 
               <div className="table-name-side-text">รายได้ต่อการบริการ</div>
               <div className="">

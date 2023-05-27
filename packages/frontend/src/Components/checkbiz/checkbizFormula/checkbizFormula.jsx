@@ -546,16 +546,49 @@ export default function checkbizFormula() {
   }
 
   function moneyDisplay(amount) {
-    return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    if (amount < 0) {
+      amount *= (-1)
+      return `(${amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")})`
+    }
+    else {
+      return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
   }
 
+  function paybackPeriadDisplay(number) {
+    // const number = 4.666666666;
+    let wholeNumber = Math.floor(number); // Extract the whole number part
+
+    // Calculate the decimal part with a variable number of decimal places
+    const decimalPlaces = 6; // Define the desired number of decimal places dynamically
+    const decimalPart = (number - wholeNumber).toFixed(decimalPlaces);
+
+    console.log(wholeNumber); // Output: 4
+    console.log(decimalPart); // Output: 0.666667 (rounded to 6 decimal places)
+
+    const month = Math.floor(decimalPart * 12)
+
+    
+    if (wholeNumber == 0 && month == 0) {
+      return `ข้อมูลไม่เพียงพอ`
+    }
+    if (wholeNumber == 0) {
+      return `คืนทุน ${month} เดือน`
+    }
+    else {
+      if (wholeNumber < 0) {
+        wholeNumber *= -1
+      }
+      return `คืนทุน ${wholeNumber} ปี ${month} เดือน`
+    }
+  }
 
   return {
     calculateInvestment, calculateCFO, calculateCFI, calculateCFF, calculateYearRange,
     calculateRevenue, calculateTotalFixdcost, calculateNPV, calculatePaybackPeriod, calculateProfitabilityIndex,
     calculateCFI2, calculateInitialInvestment_for_chart, calculateFixedCost_for_chart, calculateRevenue_service_for_chart,
-    calculateRevenue_product_for_chart, calculateMiscellaneous, moneyDisplay, getSaleTrends, calculateRevenue_fix
-
+    calculateRevenue_product_for_chart, calculateMiscellaneous, moneyDisplay, getSaleTrends, calculateRevenue_fix,
+    paybackPeriadDisplay,
   };
 
 }

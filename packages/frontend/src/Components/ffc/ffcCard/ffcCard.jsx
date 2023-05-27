@@ -33,7 +33,7 @@ const ffcCard = (props) => {
     const totalInvestment = cbf.calculateInvestment();
     const { totalRevenue, totalRevenue_MIN } = cbf.calculateRevenue();
     const totalFixedCost = cbf.calculateTotalFixdcost();
-
+    const saleTrends = cbf.getSaleTrends();
     const yearRange = cbf.calculateYearRange();
 
     const { totalRevenue_year, } = cbf.calculateRevenue_fix();
@@ -43,6 +43,8 @@ const ffcCard = (props) => {
     let netIncome = (totalRevenue_year.map((each, i) => each - totalFixedCost[i]))
     let CfoCfi = netIncome.map((cfo, index) => cfo + totalCFI[index]);
     let netCashflow = totalCFF.map((cff, index) => cff + CfoCfi[index]);
+
+    let netIncome_minus_CFO = netIncome.map((cfo, index) => cfo + totalCFI[index]);
 
 
     let initialInvestment = totalCFI[0];
@@ -605,7 +607,7 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {console.log("totalInvestment" + totalInvestment)}
-                                            <td>{calculateNPV(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
+                                            <td scope="col" >{calculateNPV(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
                                             {/* <td>{calculateNPV(initialInvestment, cashFlows, discountRate)}</td> */}
                                         </tr>
                                         {/* <tr>
@@ -621,7 +623,7 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {/* <td>{calculatePaybackPeriod(initialInvestment, cashFlows)}</td> */}
-                                            <td>{calculatePaybackPeriod(initialInvestment, netCashflow)}</td>
+                                            <td scope="col">{cbf.paybackPeriadDisplay(calculatePaybackPeriod(initialInvestment, netCashflow))}</td>
                                         </tr>
                                         <tr>
                                             <td>profitability index (PI)</td>
@@ -629,57 +631,121 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {/* <td>{calculateProfitabilityIndex(initialInvestment, cashFlows, discountRate)}</td> */}
-                                            <td>{calculateProfitabilityIndex(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
+                                            <td scope="col" >{calculateProfitabilityIndex(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
                                         </tr>
                                     </tbody>
 
                                 </table>
                             }
                             {props.type === "entrepreneurial-decision" &&
-                                <table className="table table-sm ffc-table-text">
-                                    {/* {calculateInitialInvestment()} */}
-                                    <thead>
-                                        <tr>
-                                            {/* <th style={{ width: "390px" }} scope="col">Financial Return</th>
-                                            <th style={{ width: "190px" }} className="text-left" scope="col">Best Case</th> */}
-                                            {/* <th sstyle={{ width: "190px" }} cope="col">Average</th>
-                                            <th sstyle={{ width: "190px" }} cope="col">Worst Case</th>
-                                            <th sstyle={{ width: "90px" }} cope="col">xxxx</th> */}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>ประมาณการเงินลงทุน</td>
-                                            {/* <td></td>
-                                            <td></td>
-                                            <td></td> */}
-                                            {console.log("totalInvestment" + initialInvestment)}
-                                            <td>{initialInvestment}</td>
-                                            {/* <td>{calculateNPV(initialInvestment, cashFlows, discountRate)}</td> */}
-                                        </tr>
-                                        {/* <tr>
-                                            <td>Internal rate of return (IRR)</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>{calculateIRR(calculateCashFlows(200000,0.7,4)(calculateCashFlows(200000,0.7,4)))}</td>
-                                        </tr> */}
-                                        <tr>
-                                            <td>ประมาณการค่าใช้จ่ายแต่ละปี</td>
-                                            {/* <td></td>
-                                            <td></td>
-                                            <td></td> */}
-                                            {/* <td>{calculatePaybackPeriod(initialInvestment, cashFlows)}</td> */}
-                                            <td>{calculatePaybackPeriod(initialInvestment, calculateCashFlows(initialInvestment, 0.7, 4))}</td>
-                                        </tr>
-                                        {/* <tr>
-                                            <td>ประมาณการเติบโตของค่าใช้จ่ายต่อปี</td>
-                                            <td>{calculateProfitabilityIndex(totalInvestment, calculateCashFlows(initialInvestment, 0.7, 4), 0.7)}</td>
-                                        </tr> */}
-                                       
-                                    </tbody>
+                                <div>
+                                    
+                                    <table className="table container table-hover">
+                                        <thead>
+                                            <tr className="table">
+                                                <th scope="col" className="dov-name-cell">รายการ</th>
+                                                {yearRange.map((i) => (
+                                                    <th scope="col" className="dov-money-cell">{i}</th>
+                                                ))}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {/* <th className="dov-name-cell">รายได้จากการขายสินค้าและบริการ</th>
+                                            {tableRevenueData.service_tables.map((table) => (
+                                                <React.Fragment key={table._id}>
+                                                    {table.services.map((each) => (
+                                                        <tr key={each._id}>
+                                                            <td className="dov-name-cell">{each.name}</td>
+                                                            {saleTrends.map((st) => (
+                                                                <td scope="col" className="dov-money-cell">{(((each.revenue_per_service * each.unit * each.serve_per_unit) * ((100 - each.cost_per_service) / 100)) * 30 * 12 * st / 100).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                                                            ))}
 
-                                </table>
+                                                        </tr>
+                                                    ))}
+                                                </React.Fragment>
+                                            ))}
+                                            {tableRevenueData.product_tables.map((table) => (
+                                                <React.Fragment key={table._id}>
+                                                    {table.products.map((each) => (
+                                                        <tr key={each._id}>
+                                                            <td className="dov-name-cell">{each.name}</td>
+                                                            {saleTrends.map((st, i) => {
+                                                                let eachPD_year = 0;
+                                                                each.seasonal_trends.map((ssn, j) => {
+                                                                    eachPD_year += (each.revenue_per_unit * ((100 - each.cost_per_unit) / 100)) * 30 * (ssn / 100)
+                                                                })
+                                                                return (
+                                                                    <td scope="col" className="dov-money-cell">
+                                                                        {(eachPD_year * st / 100).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                                                    </td>
+                                                                )
+                                                            })}
+
+                                                        </tr>
+                                                    ))}
+                                                </React.Fragment>
+                                            ))} */}
+                                            <tr>
+                                                <td scope="row" className="dov-name-cell">รวมรายได้จากการขายสินค้าและบริการ</td>
+                                                {totalRevenue_year.map((data) => (
+                                                    <td scope="col" className="dov-money-cell">{data.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                                                ))}
+                                            </tr>
+                                            {/* <th className="dov-name-cell">รายจ่ายจากต้นทุนขายและบริการ</th>
+                                            {tableExpenseData.fixed_cost_tables.map((tableFixedCost) => (
+                                                <React.Fragment key={tableFixedCost._id}>
+                                                    {tableFixedCost.fixed_costs.map((eachFixedCost) =3> (
+                                                        <tr key={eachFixedCost._id}>
+                                                            <td className="dov-name-cell">{eachFixedCost.name}</td>
+
+                                                            {saleTrends.map((st, i) => (
+                                                                <td scope="col" className="dov-money-cell">{(eachFixedCost.amount * eachFixedCost.unit * 12 * ((100 + (eachFixedCost.cost_increase * i)) / 100)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                                                            ))}
+
+                                                        </tr>
+                                                    ))}
+                                                </React.Fragment>
+                                            ))} */}
+
+                                            <tr>
+                                                <td scope="row" className="dov-name-cell">รายจ่ายจากต้นทุนขายและบริการ</td>
+                                                {totalFixedCost.map((i) => (
+                                                    <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i*(-1))}</td>
+                                                ))}
+                                            </tr>
+                                            <tr>
+                                                <td scope="column" className="dov-border-cell">กำไรก่อนภาษีเงินได้</td>
+                                                {netIncome.map((i) => (
+                                                    <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
+                                                ))}
+                                            </tr>
+                                            <tr>
+                                                <td scope="column" className="dov-border-cell">ค่าใช้จ่ายภาษีเงินได้</td>
+                                                {yearRange.map((i) => (
+                                                    <td scope="col" className="dov-money-cell-b">0</td>
+                                                ))}
+                                            </tr>
+                                            <tr>
+                                                <td scope="column" className="dov-border-cell">กำไรสุทธิ</td>
+                                                {netIncome.map((i) => (
+                                                    <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
+                                                ))}
+                                            </tr>
+                                            <tr>
+                                                <td scope="row" className="dov-name-cell">รายจ่ายจากต้นธุรกิจ</td>
+                                                {totalCFI.map((i) => (
+                                                    <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i)}</td>
+                                                ))}
+                                            </tr>
+                                            <tr>
+                                                <td scope="column" className="dov-border-cell">กำไรสุทธิ (หักต้นธุรกิจ)</td>
+                                                {netIncome_minus_CFO.map((i) => (
+                                                    <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
+                                                ))}
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             }
 
                         </div>

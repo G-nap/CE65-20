@@ -190,7 +190,7 @@ const cashFlowDocument = () => {
             <tr>
               <td className="dov-name-cell">ต้นทุนทางการเงิน</td>
               {totalFixedCost.map((i) => (
-                <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i)}</td>
+                <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i*(-1))}</td>
               ))}
             </tr>
             <tr>

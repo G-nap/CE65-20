@@ -27,6 +27,14 @@ const statementHearder = (props) => {
                 {/* <button>sensitivity</button> */}
               </Link>
               <div>
+                {/* &nbsp;
+                <Link to={props.listPath}>
+                  Income
+                </Link>
+                &nbsp;
+                <Link to={props.listPath}>
+                  CashFlow
+                </Link> */}
                 &nbsp;
                 <Link to={props.listPath}>
                   <FaThList />
