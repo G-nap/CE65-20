@@ -13,7 +13,7 @@ import INPUT_TYPES from "../../../pages/comparePage/createProjectInputTypes";
 import { useNavigate } from "react-router-dom";
 
 function infoProject(props) {
-  const INDUSTRY_CREATE_URL = "http://localhost:5000/industry/post/"
+  const INDUSTRY_CREATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/industry/post/"
 
   const dispatch = useDispatch();
 
@@ -79,7 +79,7 @@ function infoProject(props) {
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
-      await axios.post("http://localhost:5000/", formData, {
+      await axios.post("https://sea-turtle-app-o8dz8.ondigitalocean.app/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       }).then(res => {
         setImageUrl(res.data.filename)

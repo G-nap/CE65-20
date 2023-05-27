@@ -5,7 +5,7 @@ const dbTest1 = () => {
     <div>
       <div>test</div>
       <div>
-        <img src={`http://localhost:5000/1-d21a.png`} alt="abc" style={{width: '100%'}}/>
+        <img src={`https://sea-turtle-app-o8dz8.ondigitalocean.app/1-d21a.png`} alt="abc" style={{width: '100%'}}/>
       </div>
     </div>
   )

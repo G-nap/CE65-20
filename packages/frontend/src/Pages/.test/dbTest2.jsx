@@ -14,7 +14,7 @@ function DBTest2() {
         params: { username: username },
         headers: { Authorization: `Bearer ${token}` }
       }
-      axios.get("http://localhost:5000/user/username",
+      axios.get("https://sea-turtle-app-o8dz8.ondigitalocean.app/user/username",
         config,
       )
         .then(res => {
@@ -47,7 +47,7 @@ function DBTest2() {
     const config = {
       params: {username: user.username}
     }
-    axios.put('http://localhost:5000/user/update',data, config,)
+    axios.put('https://sea-turtle-app-o8dz8.ondigitalocean.app/user/update',data, config,)
     .then(res => {
       setIsLoaded(false)
     })

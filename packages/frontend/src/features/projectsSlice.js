@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
-const CREATE_URL = "http://localhost:5000/project/post/"
-const FETCH_URL = "http://localhost:5000/project/user/"
-const UPDATE_URL = "http://localhost:5000/project/edit?projectID="
-const DELETE_URL = "http://localhost:5000/project/delete?projectID="
+const CREATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/project/post/"
+const FETCH_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/project/user/"
+const UPDATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/project/edit?projectID="
+const DELETE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/project/delete?projectID="
 
 const initialState = {
     projects: [],

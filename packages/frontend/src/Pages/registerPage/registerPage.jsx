@@ -22,7 +22,7 @@ function RegisterPage() {
     params.append('name', input.name);
     params.append('surname', input.surname);
     params.append('is_cooperation', false);
-    axios.post("http://localhost:5000/user/signup"
+    axios.post("https://sea-turtle-app-o8dz8.ondigitalocean.app/user/signup"
       , params,)
       .then(res => {
         console.log(res)

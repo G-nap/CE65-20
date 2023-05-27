@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
-const CREATE_URL = "http://localhost:5000/user/signup"
-const LOGIN_URL = "http://localhost:5000/auth/auth/login"
-const FETCH_URL = "http://localhost:5000/user/username"
-const UPDATE_URL = "http://localhost:5000/user/update?username"
-const DELETE_URL = "http://localhost:5000/user/delete?userID="
+const CREATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/signup"
+const LOGIN_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/auth/auth/login"
+const FETCH_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/username"
+const UPDATE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/update?username"
+const DELETE_URL = "https://sea-turtle-app-o8dz8.ondigitalocean.app/user/delete?userID="
 
 
 // user : {

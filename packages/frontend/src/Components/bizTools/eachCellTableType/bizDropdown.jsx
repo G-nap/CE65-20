@@ -24,7 +24,7 @@ const bizDropdown = (props) => {
   const [selectDropdown, setSelectDropdown] = useState();
 
   const ASSET_ACOUNT_FETCH_URL =
-    "http://localhost:5000/assetAccount/assetAccounts";
+    "https://sea-turtle-app-o8dz8.ondigitalocean.app/assetAccount/assetAccounts";
   // const assetAccounts = useSelector(state => state.assetAccounts.assetAccounts)
 
   const onChangeHandle = (tableId, valueKey) => {

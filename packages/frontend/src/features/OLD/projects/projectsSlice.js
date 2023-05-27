@@ -2,7 +2,7 @@
 // import { sub } from "date-fns";
 // import axios from "axios";
 
-// const PROJECTS_URL = 'http://localhost:5000/project/post';
+// const PROJECTS_URL = 'https://sea-turtle-app-o8dz8.ondigitalocean.app/project/post';
 
 // // const initialState = [
 // //   {
