@@ -17,6 +17,8 @@ import {
 import EditInputOnSidebar from "../../checkbiz/sidebarEditdata/editInputOnSidebar";
 import checkbizFormula from "../../checkbiz/checkbizFormula/checkbizFormula";
 
+
+
 // import BarChart from '../../statement/charts/barChart';
 // import CombinationChartsMinMax from '../../statement/charts/combinationChartsMinMax';
 // import stackedBar from '../../statement/charts/stackedBar';
@@ -340,42 +342,44 @@ const ffcCard = (props) => {
                         :
                         <div className='ffc-card-body'>
                             {props.type === "revenue" &&
-                                <table className="table table-sm ffc-table-text">
-                                    <thead>
-                                        <tr>
-                                            {/* <th style={{ width: "390px" }} scope="col">name</th>
+                                <div>
+                                    <table className="table table-sm ffc-table-text">
+                                        <thead>
+                                            <tr>
+                                                {/* <th style={{ width: "390px" }} scope="col">name</th>
                                             <th style={{ width: "390px" }} className="text-left" scope="col">amount</th>
                                             <th sstyle={{ width: "390px" }} cope="col">start_date</th> */}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {tableRevenueData.service_tables.map((table) => (
-                                            <React.Fragment key={table._id}>
-                                                {table.services.map((each) => (
-                                                    <tr key={each._id}>
-                                                        <td>{each.name}</td>
-                                                        <td>{each.revenue_per_service}</td>
-                                                        <td>{each.start_date.substring(0, 10)}</td>
-                                                    </tr>
-                                                ))}
-                                            </React.Fragment>
-                                        ))}
-                                        {tableRevenueData.product_tables.map((table) => (
-                                            <React.Fragment key={table._id}>
-                                                {table.products.map((each) => (
-                                                    <tr key={each._id}>
-                                                        <td>{each.name}</td>
-                                                        <td>{each.revenue_per_unit}</td>
-                                                        <td>{each.start_date.substring(0, 10)}</td>
-                                                    </tr>
-                                                ))}
-                                            </React.Fragment>
-                                        ))}
-                                    </tbody>
-                                </table>
-
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {tableRevenueData.service_tables.map((table) => (
+                                                <React.Fragment key={table._id}>
+                                                    {table.services.map((each) => (
+                                                        <tr key={each._id}>
+                                                            <td>{each.name}</td>
+                                                            <td>{each.revenue_per_service}</td>
+                                                            <td>{each.start_date.substring(0, 10)}</td>
+                                                        </tr>
+                                                    ))}
+                                                </React.Fragment>
+                                            ))}
+                                            {tableRevenueData.product_tables.map((table) => (
+                                                <React.Fragment key={table._id}>
+                                                    {table.products.map((each) => (
+                                                        <tr key={each._id}>
+                                                            <td>{each.name}</td>
+                                                            <td>{each.revenue_per_unit}</td>
+                                                            <td>{each.start_date.substring(0, 10)}</td>
+                                                        </tr>
+                                                    ))}
+                                                </React.Fragment>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                             }
                             {props.type === "revenue-service" &&
+                      
                                 <table className="table table-sm ffc-table-text">
                                     <thead>
                                         <tr>
@@ -388,17 +392,17 @@ const ffcCard = (props) => {
                                         {tableRevenueData.service_tables.map((table) => (
                                             <React.Fragment key={table._id}>
                                                 {table.services.map((each) => (
-                                                    <tr key={each._id}>
-                                                        <td>{each.name}</td>
-                                                        <td>{each.revenue_per_service}</td>
-                                                        <td>{each.start_date.substring(0, 10)}</td>
+                                                    <tr key={each._id} className="d-flex">
+                                                        <td style={{ width: "300px", textAlign: "left" }}>{each.name}</td>
+                                                        <td style={{ width: "300px", textAlign: "left", paddingRight: "250px" }} className="d-flex justify-content-end">{cbf.moneyDisplay(each.revenue_per_service)}</td>
+                                                        <td style={{ width: "300px", textAlign: "left" }}>{each.start_date.substring(0, 10)}</td>
                                                     </tr>
                                                 ))}
                                             </React.Fragment>
                                         ))}
                                     </tbody>
                                 </table>
-
+                               
                             }
                             {props.type === "revenue-product" &&
                                 <table className="table table-sm ffc-table-text">
@@ -413,10 +417,10 @@ const ffcCard = (props) => {
                                         {tableRevenueData.product_tables.map((table) => (
                                             <React.Fragment key={table._id}>
                                                 {table.products.map((each) => (
-                                                    <tr key={each._id}>
-                                                        <td>{each.name}</td>
-                                                        <td>{each.revenue_per_unit}</td>
-                                                        <td>{each.start_date.substring(0, 10)}</td>
+                                                    <tr key={each._id} className="d-flex">
+                                                        <td style={{ width: "300px", textAlign: "left" }}>{each.name}</td>
+                                                        <td style={{ width: "300px", textAlign: "left", paddingRight: "250px" }} className="d-flex justify-content-end">{cbf.moneyDisplay(each.revenue_per_unit)}</td>
+                                                        <td style={{ width: "300px", textAlign: "left" }}>{each.start_date.substring(0, 10)}</td>
                                                     </tr>
                                                 ))}
                                             </React.Fragment>
@@ -449,30 +453,7 @@ const ffcCard = (props) => {
                                         ))}
                                     </div>
                                 ))}
-                            {props.type === "expense" &&
-                                <table className="table table-sm ffc-table-text">
-                                    <thead>
-                                        <tr>
-                                            {/* <th style={{ width: "390px" }} scope="col">name</th>
-                                            <th style={{ width: "390px" }} className="text-left" scope="col">amount</th>
-                                            <th sstyle={{ width: "390px" }} cope="col">start_date</th> */}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {tableExpenseData.fixed_cost_tables.map((tableFixedCost) => (
-                                            <React.Fragment key={tableFixedCost._id}>
-                                                {tableFixedCost.fixed_costs.map((eachFixedCost) => (
-                                                    <tr key={eachFixedCost._id}>
-                                                        <td>{eachFixedCost.name}</td>
-                                                        <td>{eachFixedCost.amount}</td>
-                                                        <td>{eachFixedCost.start_date.substring(0, 10)}</td>
-                                                    </tr>
-                                                ))}
-                                            </React.Fragment>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            }
+
                             {props.type === "total-investment" &&
                                 <table className="table table-sm ffc-table-text">
                                     {/* {calculateInitialInvestment()} */}
@@ -487,10 +468,10 @@ const ffcCard = (props) => {
                                         {tableExpenseData.investment_tables.map((table) => (
                                             <React.Fragment key={table._id}>
                                                 {table.investments.map((each) => (
-                                                    <tr key={each._id}>
-                                                        <td>{each.name}</td>
-                                                        <td>{cbf.moneyDisplay(each.amount)}</td>
-                                                        <td>{each.start_date.substring(0, 10)}</td>
+                                                    <tr key={each._id} className="d-flex">
+                                                        <td style={{ width: "300px", textAlign: "left" }}>{each.name}</td>
+                                                        <td style={{ width: "300px", textAlign: "left", paddingRight: "250px" }} className="d-flex justify-content-end">{cbf.moneyDisplay(each.amount)}</td>
+                                                        <td style={{ width: "300px", textAlign: "left" }}>{each.start_date.substring(0, 10)}</td>
                                                     </tr>
                                                 ))}
                                             </React.Fragment>
@@ -499,6 +480,30 @@ const ffcCard = (props) => {
                                             {/* <th>เงินลงทุนสุทธิ</th>
                                             <th>{totalCFI}</th> */}
                                         </tr>
+                                    </tbody>
+                                </table>
+                            }
+                            {props.type === "expense" &&
+                                <table className="table table-sm ffc-table-text">
+                                    <thead>
+                                        <tr>
+                                            {/* <th style={{ width: "390px" }} scope="col">name</th>
+                                            <th style={{ width: "390px" }} className="text-left" scope="col">amount</th>
+                                            <th sstyle={{ width: "390px" }} cope="col">start_date</th> */}
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        {tableExpenseData.fixed_cost_tables.map((tableFixedCost) => (
+                                            <React.Fragment key={tableFixedCost._id}>
+                                                {tableFixedCost.fixed_costs.map((eachFixedCost) => (
+                                                    <tr key={eachFixedCost._id} className="d-flex">
+                                                        <td style={{ width: "300px", textAlign: "left" }} className="d-flex ">{eachFixedCost.name}</td>
+                                                        <td style={{ width: "300px", textAlign: "left", paddingRight: "250px" }} className="d-flex justify-content-end">{cbf.moneyDisplay(eachFixedCost.amount)}</td>
+                                                        <td style={{ width: "300px", textAlign: "left" }} className="d-flex ">{eachFixedCost.start_date.substring(0, 10)}</td>
+                                                    </tr>
+                                                ))}
+                                            </React.Fragment>
+                                        ))}
                                     </tbody>
                                 </table>
                             }
@@ -607,7 +612,7 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {console.log("totalInvestment" + totalInvestment)}
-                                            <td scope="col" >{calculateNPV(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
+                                            <td scope="col" style={{ textAlign: "left" }} className="d-flex justify-content-end">{calculateNPV(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
                                             {/* <td>{calculateNPV(initialInvestment, cashFlows, discountRate)}</td> */}
                                         </tr>
                                         {/* <tr>
@@ -623,7 +628,7 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {/* <td>{calculatePaybackPeriod(initialInvestment, cashFlows)}</td> */}
-                                            <td scope="col">{cbf.paybackPeriadDisplay(calculatePaybackPeriod(initialInvestment, netCashflow))}</td>
+                                            <td scope="col" style={{ textAlign: "left" }} className="d-flex justify-content-end">{cbf.paybackPeriadDisplay(calculatePaybackPeriod(initialInvestment, netCashflow))}</td>
                                         </tr>
                                         <tr>
                                             <td>profitability index (PI)</td>
@@ -631,26 +636,26 @@ const ffcCard = (props) => {
                                             <td></td>
                                             <td></td> */}
                                             {/* <td>{calculateProfitabilityIndex(initialInvestment, cashFlows, discountRate)}</td> */}
-                                            <td scope="col" >{calculateProfitabilityIndex(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
+                                            <td scope="col" style={{ textAlign: "left" }} className="d-flex justify-content-end">{calculateProfitabilityIndex(initialInvestment, netCashflow, modelConfig.discounting_rate / 100)}</td>
                                         </tr>
                                     </tbody>
 
                                 </table>
                             }
                             {props.type === "entrepreneurial-decision" &&
-                                <div>
-                                    
-                                    <table className="table container table-hover">
-                                        <thead>
-                                            <tr className="table">
-                                                <th scope="col" className="dov-name-cell">รายการ</th>
-                                                {yearRange.map((i) => (
-                                                    <th scope="col" className="dov-money-cell">{i}</th>
-                                                ))}
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {/* <th className="dov-name-cell">รายได้จากการขายสินค้าและบริการ</th>
+
+
+                                <table className="table container table-hover">
+                                    <thead>
+                                        <tr className="table">
+                                            <th scope="col" className="dov-name-cell">รายการ</th>
+                                            {yearRange.map((i) => (
+                                                <th scope="col" className="dov-money-cell">{i}</th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {/* <th className="dov-name-cell">รายได้จากการขายสินค้าและบริการ</th>
                                             {tableRevenueData.service_tables.map((table) => (
                                                 <React.Fragment key={table._id}>
                                                     {table.services.map((each) => (
@@ -685,13 +690,13 @@ const ffcCard = (props) => {
                                                     ))}
                                                 </React.Fragment>
                                             ))} */}
-                                            <tr>
-                                                <td scope="row" className="dov-name-cell">รวมรายได้จากการขายสินค้าและบริการ</td>
-                                                {totalRevenue_year.map((data) => (
-                                                    <td scope="col" className="dov-money-cell">{data.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                                                ))}
-                                            </tr>
-                                            {/* <th className="dov-name-cell">รายจ่ายจากต้นทุนขายและบริการ</th>
+                                        <tr>
+                                            <td scope="row" className="dov-name-cell">รวมรายได้จากการขายสินค้าและบริการ</td>
+                                            {totalRevenue_year.map((data) => (
+                                                <td scope="col" className="dov-money-cell">{data.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                                            ))}
+                                        </tr>
+                                        {/* <th className="dov-name-cell">รายจ่ายจากต้นทุนขายและบริการ</th>
                                             {tableExpenseData.fixed_cost_tables.map((tableFixedCost) => (
                                                 <React.Fragment key={tableFixedCost._id}>
                                                     {tableFixedCost.fixed_costs.map((eachFixedCost) =3> (
@@ -707,45 +712,45 @@ const ffcCard = (props) => {
                                                 </React.Fragment>
                                             ))} */}
 
-                                            <tr>
-                                                <td scope="row" className="dov-name-cell">รายจ่ายจากต้นทุนขายและบริการ</td>
-                                                {totalFixedCost.map((i) => (
-                                                    <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i*(-1))}</td>
-                                                ))}
-                                            </tr>
-                                            <tr>
-                                                <td scope="column" className="dov-border-cell">กำไรก่อนภาษีเงินได้</td>
-                                                {netIncome.map((i) => (
-                                                    <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
-                                                ))}
-                                            </tr>
-                                            <tr>
-                                                <td scope="column" className="dov-border-cell">ค่าใช้จ่ายภาษีเงินได้</td>
-                                                {yearRange.map((i) => (
-                                                    <td scope="col" className="dov-money-cell-b">0</td>
-                                                ))}
-                                            </tr>
-                                            <tr>
-                                                <td scope="column" className="dov-border-cell">กำไรสุทธิ</td>
-                                                {netIncome.map((i) => (
-                                                    <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
-                                                ))}
-                                            </tr>
-                                            <tr>
-                                                <td scope="row" className="dov-name-cell">รายจ่ายจากต้นธุรกิจ</td>
-                                                {totalCFI.map((i) => (
-                                                    <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i)}</td>
-                                                ))}
-                                            </tr>
-                                            <tr>
-                                                <td scope="column" className="dov-border-cell">กำไรสุทธิ (หักต้นธุรกิจ)</td>
-                                                {netIncome_minus_CFO.map((i) => (
-                                                    <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
-                                                ))}
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <tr>
+                                            <td scope="row" className="dov-name-cell">รายจ่ายจากต้นทุนขายและบริการ</td>
+                                            {totalFixedCost.map((i) => (
+                                                <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i * (-1))}</td>
+                                            ))}
+                                        </tr>
+                                        <tr>
+                                            <td scope="column" className="dov-border-cell">กำไรก่อนภาษีเงินได้</td>
+                                            {netIncome.map((i) => (
+                                                <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
+                                            ))}
+                                        </tr>
+                                        <tr>
+                                            <td scope="column" className="dov-border-cell">ค่าใช้จ่ายภาษีเงินได้</td>
+                                            {yearRange.map((i) => (
+                                                <td scope="col" className="dov-money-cell-b">0</td>
+                                            ))}
+                                        </tr>
+                                        <tr>
+                                            <td scope="column" className="dov-border-cell">กำไรสุทธิ</td>
+                                            {netIncome.map((i) => (
+                                                <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
+                                            ))}
+                                        </tr>
+                                        <tr>
+                                            <td scope="row" className="dov-name-cell">รายจ่ายจากต้นธุรกิจ</td>
+                                            {totalCFI.map((i) => (
+                                                <td scope="col" className="dov-money-cell">{cbf.moneyDisplay(i)}</td>
+                                            ))}
+                                        </tr>
+                                        <tr>
+                                            <td scope="column" className="dov-border-cell">กำไรสุทธิ (หักต้นธุรกิจ)</td>
+                                            {netIncome_minus_CFO.map((i) => (
+                                                <td scope="col" className="dov-money-cell-b">{cbf.moneyDisplay(i)}</td>
+                                            ))}
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             }
 
                         </div>
